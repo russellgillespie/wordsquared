@@ -104,8 +104,8 @@ const init = () => {
     keyDelete.style.fontSize = 'small';
 
     let grid = [];
-    for (let col=0;col<slices+1;col++){
-      for (let row=0;row<slices+1;row++){
+    for (let col=0;col<slices;col++){
+      for (let row=1;row<slices+1;row++){
         // Cache button metadata
         let buttonIndex = (col-1)*slices+row-1;
         let buttonText = randABC[buttonIndex];
