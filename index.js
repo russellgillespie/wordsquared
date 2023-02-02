@@ -135,7 +135,7 @@ const init = () => {
           }
         );
 
-        if (col >= 0 && col < 5 && row > 1 && row < 6){
+        if (col > 0 && col < 5 && row > 1 && row < 6){
           addTileButton("","Slicer_"+row+"_"+col, sliceSize/5, xpos-sliceSize/10, ypos-sliceSize/10, colorUI, colorHover, null, null);
         }
       }
