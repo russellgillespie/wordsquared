@@ -31,8 +31,8 @@ const init = () => {
     // LOAD DICTIONARY DATA FROM JSON
     // Sample JSON Data
     let words = '{"data": ["another","bad","cat","dictionary","even","further","going","here","into","joking","laughter","mostly","night","or","possibly","questions","related","surveys","to","understand","very","well","xylophone","zebras"]}';
-    let url = 'https://github.com/russellgillespie/wordsquared/blob/015c2065548dbc80d92461ec502693147478efd8/dictionary.json';
-    
+    //let url = 'https://github.com/russellgillespie/wordsquared/blob/015c2065548dbc80d92461ec502693147478efd8/dictionary.json';
+    let url = './dictionary.json';
     let myWords;
     fetch(url)
       .then(r =>  r.json())
