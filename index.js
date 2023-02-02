@@ -60,11 +60,11 @@ const init = () => {
     keyConsole.style.height = (sliceSize-1) + "px";
     keyConsole.style.fontSize = 'small';
 
-    let keyGuessed = addTileButton(guessedList, 30, 2*sliceSize-2, 5*sliceSize+1, 1, colorUI, colorHover, null, null);
-    keyGuessed.style.height = (sliceSize*6)-1 + "px";
+    let keyGuessed = addTileButton(guessedList, 30, 2*sliceSize-2, 5*sliceSize+1, sliceSize+1, colorUI, colorHover, null, null);
+    keyGuessed.style.height = (sliceSize*5)-1 + "px";
     keyGuessed.style.fontSize = 'small';
 
-    let keyCredits = addTileButton("WORDSQUARED\n by Russell Gillespie", 30, sliceSize-2, 5*sliceSize+1, 6*sliceSize+1, colorUI, colorHover, null, null);
+    let keyCredits = addTileButton("wordsquared\n by Gillespie", 30, sliceSize-2, 5*sliceSize+1, 6*sliceSize+1, colorUI, colorHover, null, null);
     keyCredits.style.width = (sliceSize-1) * 2 + "px";
     keyCredits.style.height = (sliceSize-1) + "px";
     keyCredits.style.fontSize = 'small';
