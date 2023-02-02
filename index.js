@@ -90,9 +90,9 @@ const init = () => {
             keyGuessed.innerHTML = guessedList;
             keyConsole.innerHTML = answer.innerHTML + " + " + addPoints + "!";
             score = updateScore(score, addPoints, keyScore);
-          } else { keyConsole.innerHTML = "Word not in list!"}
-        } else { keyConsole.innerHTML = "Key Letter not used!"}
-      } else { keyConsole.innerHTML = "Word already guessed!"}
+          } else { keyConsole.innerHTML = "Word Not In List!"}
+        } else { keyConsole.innerHTML = "Key Letter Not Used!"}
+      } else { keyConsole.innerHTML = "Word Already Guessed!"}
      });
 
      keyEnter.style.height = sliceSize-2 +"px";
