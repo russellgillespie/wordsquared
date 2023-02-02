@@ -199,9 +199,9 @@ function updateScore(current, value, target){
 function matchWordToDict(word, dict){
   for (var key in dict) {
     if (word==key){
-      return true
+      return true;
     } else {
-      continue
+      continue;
     }
-  );
+  });
 }
