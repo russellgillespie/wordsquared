@@ -32,13 +32,9 @@ const init = () => {
       randABC.push(nextLetter);
     }
  
-    // LOAD DICTIONARY DATA FROM JSON
-    let wordDict = "";
-    fetch('./dictionary.json')
-    .then((response) => response.json())
-    .then((json) => wordDict=json);
-    
-    console.log(wordDict);
+    // LOAD DICTIONARY DATA FROM JSON    
+    import data from './dictionary.json' assert { type: 'JSON' };
+    console.log(data);
     
     let score = 0;
     let colorPrimary = "#5838ae";
