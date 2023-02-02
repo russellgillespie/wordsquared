@@ -85,10 +85,11 @@ const init = () => {
       if (guessedList.includes(answer)==false){
         if (answer.innerHTML.includes(abc[0])){
           if (matchWordToDict(answer.innerHTML.toLowerCase(), wordDict)) {
+            var addPoints = answer.innerHTML.length;
             guessedList += answer.innerHTML;
             keyGuessed.innerHTML = guessedList;
-            keyConsole.innerHTML = answer.innerHTML + " + " + score + "!";
-            score = updateScore(score, answer.innerHTML.length, keyScore);
+            keyConsole.innerHTML = answer.innerHTML + " + " + addPoints + "!";
+            score = updateScore(score, addPoints, keyScore);
           } else { keyConsole.innerHTML = "Word not in list!"}
         } else { keyConsole.innerHTML = "Key Letter not used!"}
       } else { keyConsole.innerHTML = "Word already guessed!"}
