@@ -34,7 +34,7 @@ const init = () => {
  
     // LOAD DICTIONARY DATA FROM JSON
     const wordDict = "";
-    fetch('/dictionary.json')
+    fetch('./dictionary.json')
     .then((response) => response.json())
     .then((json) => wordDict=json);
     
