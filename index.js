@@ -32,20 +32,12 @@ const init = () => {
     // Sample JSON Data
     let words = '{"data": ["another","bad","cat","dictionary","even","further","going","here","into","joking","laughter","mostly","night","or","possibly","questions","related","surveys","to","understand","very","well","xylophone","zebras"]}';
     //let url = 'https://github.com/russellgillespie/wordsquared/blob/015c2065548dbc80d92461ec502693147478efd8/dictionary.json';
-    let url = './dictionary.json';
-    let myWords;
-    fetch('./dictionary.txt')
+    let url = 'https://raw.githubusercontent.com/russellgillespie/wordsquared/main/dictionary.json';
+    let wordDict;
+    fetch(url)
       .then(r =>  r.text())
-      .then(e => myWords = e)
-    
-    console.log (myWords);
-      // .then(response => console.log(response));;
-    //console.log(myWords);
-    //console.log(words);
-    
-    const wordDict = myWords;
-    //console.log(words);
-    //console.log(wordDict);
+      .then(e => wordDict = e)
+    console.log(wordDict);
     
     let score = 0;
     let colorPrimary = "#5838ae";
