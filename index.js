@@ -34,7 +34,7 @@ const init = () => {
  
     // LOAD DICTIONARY DATA FROM JSON    
     let wordDict;    
-    fetch(url).then(
+    fetch("./dictionary.json").then(
         function(u){ return u.json();}
       ).then(
         function(json){
