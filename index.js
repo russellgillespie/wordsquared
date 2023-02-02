@@ -31,19 +31,12 @@ const init = () => {
       let nextLetter = abc.splice(getRandomInt(abc.length),1);
       randABC.push(nextLetter);
     }
-    
-    const url = "http://www.puzzlers.org/pub/wordlists/pocket.txt";
-    
-    let dictionary = "";
-
-    fetch(url)
-      .then(res => res.text())
-      .then(data => {
-        dictionary = data;
-      })
-    .then(() => {
-    console.log(dictionary);
-   });
+ 
+    // LOAD DICTIONARY DATA FROM JSON
+    const wordDict = "";
+    fetch('/dictionary.json')
+    .then((response) => response.json())
+    .then((json) => wordDict=json);
     
     let score = 0;
     let colorPrimary = "#5838ae";
@@ -75,10 +68,10 @@ const init = () => {
     answer.style.height = sliceSize-2 +"px";
     answer.style.fontSize = 'small'; 
     
-     let enter = addTileButton("Enter",26, sliceSize - 1, (sliceSize*5)+1, (sliceSize * 6)+1, colorUI, colorHover, null, function(){
+    let enter = addTileButton("Enter",26, sliceSize - 1, (sliceSize*5)+1, (sliceSize * 6)+1, colorUI, colorHover, null, function(){
       // Check if innerHTML is valid word
-       if (answer.innerHTML.toString().includes(abc[0])){
-         if (dictionary.search(answer.innerHTML.toLowerCase())) { 
+       if (answer.innerHTML.includes(abc[0])){
+         if (matchWordToDict(answer.innerHTML.toLowerCase(), wordDict) { 
            score = updateScore(score, answer.innerHTML.length, keyScore);
          } else { alert("Word not in list!")}
        } else { alert("Key Letter not used!")}
@@ -201,4 +194,14 @@ function updateScore(current, value, target){
   current += value;
   target.innerHTML = "Score: " + current;
   return current;
+}
+
+function matchWordToDict(word, dict){
+  for (var key in dict) {
+    if (word==key){
+      return true
+    } else {
+      continue
+    }
+  );
 }
