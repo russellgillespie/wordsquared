@@ -71,7 +71,7 @@ const init = () => {
     let enter = addTileButton("Enter",26, sliceSize - 1, (sliceSize*5)+1, (sliceSize * 6)+1, colorUI, colorHover, null, function(){
       // Check if innerHTML is valid word
        if (answer.innerHTML.includes(abc[0])){
-         if (matchWordToDict(answer.innerHTML.toLowerCase(), wordDict) { 
+         if (matchWordToDict(answer.innerHTML.toLowerCase(), wordDict)) { 
            score = updateScore(score, answer.innerHTML.length, keyScore);
          } else { alert("Word not in list!")}
        } else { alert("Key Letter not used!")}
