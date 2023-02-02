@@ -33,14 +33,20 @@ const init = () => {
     }
  
     // LOAD DICTIONARY DATA FROM JSON    
-    let wordDict;    
+     //let words = '{"data": ["another","bad","cat","dictionary","even","further","going","here","into","joking","laughter","mostly","night","or","possibly","questions","related","surveys","to","understand","very","well","xylophone","zebras"]}';
+
+    let words = "";    
     fetch("./dictionary.json").then(
         function(u){ return u.json();}
       ).then(
         function(json){
-          wordDict = json;
+          words = json;
         }
       )
+    
+    const wordDict = JSON.parse(words)["data"];
+    console.log(words);
+    console.log(wordDict);
     
     let score = 0;
     let colorPrimary = "#5838ae";
