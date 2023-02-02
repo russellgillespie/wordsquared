@@ -33,8 +33,14 @@ const init = () => {
     }
  
     // LOAD DICTIONARY DATA FROM JSON    
-    import data from './dictionary.json' assert { type: 'JSON' };
-    console.log(data);
+    let wordDict;    
+    fetch(url).then(
+        function(u){ return u.json();}
+      ).then(
+        function(json){
+          wordDict = json;
+        }
+      )
     
     let score = 0;
     let colorPrimary = "#5838ae";
