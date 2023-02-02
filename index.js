@@ -38,6 +38,8 @@ const init = () => {
     .then((response) => response.json())
     .then((json) => wordDict=json);
     
+    console.log(wordDict);
+    
     let score = 0;
     let colorPrimary = "#5838ae";
     let colorSecondary = "#ceae23";
