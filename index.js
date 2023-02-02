@@ -35,9 +35,17 @@ const init = () => {
     let url = 'https://raw.githubusercontent.com/russellgillespie/wordsquared/main/dictionary.json';
     let wordDict;
     fetch(url)
-      .then(r =>  r.text())
+      .then(r =>  r.json())
       .then(e => wordDict = e)
     console.log(wordDict);
+    
+    if (!wordDict){
+      url = 'https://raw.githubusercontent.com/russellgillespie/wordsquared/main/dictionary.txt';
+      fetch(url)
+        .then(r =>  r.text())
+        .then(e => wordDict = e)
+      console.log(wordDict);
+    }
     
     let score = 0;
     let colorPrimary = "#5838ae";
