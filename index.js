@@ -34,16 +34,16 @@ const init = () => {
     //let url = 'https://github.com/russellgillespie/wordsquared/blob/015c2065548dbc80d92461ec502693147478efd8/dictionary.json';
     let url = './dictionary.json';
     let myWords;
-    fetch(url)
-      .then(r =>  r.json())
-      .then(text => myWords = text)
+    fetch('./dictionary.txt')
+      .then(r =>  r.text())
+      .then(e => myWords = e)
     
     console.log (myWords);
       // .then(response => console.log(response));;
     //console.log(myWords);
     //console.log(words);
     
-    const wordDict = JSON.parse(words)["data"];
+    const wordDict = myWords;
     //console.log(words);
     //console.log(wordDict);
     
