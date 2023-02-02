@@ -31,6 +31,7 @@ const init = () => {
     // LOAD DICTIONARY DATA FROM JSON
     // Sample JSON Data
     let wordDict = ["another","bad","cat","dictionary","even","further","going","here","into","joking","laughter","mostly","night","or","possibly","questions","related","surveys","to","understand","very","well","xylophone","zebras"];
+    console.log(wordDict);
 
     let guessedList = [];
 
@@ -55,12 +56,18 @@ const init = () => {
     // Create Interface buttons
 
     let keyConsole = addTileButton("", 30, sliceSize-2, 5*sliceSize+1, 1, colorUI, colorHover, null, null);
-    keyConsole.style.width = ((sliceSize-1) * 2)+"px";
+    keyConsole.style.width = (sliceSize-1) * 2 + "px";
+    keyConsole.style.height = (sliceSize-1) + "px";
     keyConsole.style.fontSize = 'small';
 
     let keyGuessed = addTileButton(guessedList, 30, 2*sliceSize-2, 5*sliceSize+1, 1, colorUI, colorHover, null, null);
-    keyConsole.style.height = (sliceSize*6)-1 + "px";
-    keyConsole.style.fontSize = 'small';
+    keyGuessed.style.height = (sliceSize*6)-1 + "px";
+    keyGuessed.style.fontSize = 'small';
+
+    let keyCredits = addTileButton("WORDSQUARED\n by Russell Gillespie", 30, sliceSize-2, 5*sliceSize+1, 6*sliceSize+1, colorUI, colorHover, null, null);
+    keyCredits.style.width = (sliceSize-1) * 2 + "px";
+    keyCredits.style.height = (sliceSize-1) + "px";
+    keyCredits.style.fontSize = 'small';
 
     let keyScore = addTileButton("Score: " + score, 27, sliceSize-2, 3*sliceSize+1, 1, colorUI, colorHover, null, null);
     keyScore.style.width = ((sliceSize-1) * 2)+"px";
@@ -78,12 +85,13 @@ const init = () => {
       if (guessedList.includes(answer)==false){
         if (answer.innerHTML.includes(abc[0])){
           if (matchWordToDict(answer.innerHTML.toLowerCase(), wordDict)) {
-            score = updateScore(score, answer.innerHTML.length, keyScore);
             guessedList += answer.innerHTML;
             keyGuessed.innerHTML = guessedList;
-          } else { alert("Word not in list!")}
-        } else { alert("Key Letter not used!")}
-      } else { alert("Word already guessed!")}
+            keyConsole.innerHTML = answer.innerHTML + " + " + score + "!";
+            score = updateScore(score, answer.innerHTML.length, keyScore);
+          } else { keyConsole.innerHTML = "Word not in list!"}
+        } else { keyConsole.innerHTML = "Key Letter not used!"}
+      } else { keyConsole.innerHTML = "Word already guessed!"}
      });
 
      keyEnter.style.height = sliceSize-2 +"px";
