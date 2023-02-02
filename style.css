@@ -1,0 +1,34 @@
+html {
+  background-color: black;
+  width : 100%;
+  overflow: hidden;
+}
+canvas {
+  position: absolute;
+}
+
+#gameContainer {
+  margin: none;
+  background-color : black;
+  width : 100vw;
+  height : 100vw;
+  overflow: hidden;
+}
+
+#game {
+  margin: auto;
+  position : relative;
+  width: inherit;
+  height: inherit;
+}
+
+.medText{
+}
+
+.gameButton {
+  position : absolute;
+}
+
+.gameButton :hover {
+  background-color: "#898989";
+}
