@@ -64,7 +64,7 @@ const init = () => {
     answer.style.height = sliceSize-2 +"px";
     answer.style.fontSize = 'small';
 
-    let enter = addTileButton("Enter",26, sliceSize - 1, (sliceSize*5)+1, (sliceSize * 6)+1, colorUI, colorHover, null, function(){
+    let keyEnter = addTileButton("Enter",26, sliceSize - 1, (sliceSize*4)+1, (sliceSize * 6)+1, colorUI, colorHover, null, function(){
       // Check if innerHTML is valid word
       if (guessedList.includes(answer)==false){
         if (answer.innerHTML.includes(abc[0])){
@@ -75,11 +75,11 @@ const init = () => {
       } else { alert("Word already guessed!")}
      });
 
-     enter.style.height = sliceSize-2 +"px";
-     enter.addEventListener ("mouseup", function(){
+     keyEnter.style.height = sliceSize-2 +"px";
+     keyEnter.addEventListener ("mouseup", function(){
        answer.innerHTML = "";
      });
-     enter.style.fontSize = 'small';
+     keyEnter.style.fontSize = 'small';
 
 
     let keyLetter = addTileButton(abc[0],25, sliceSize-2, (2*sliceSize)+1, 1, colorSecondary, colorHover, answer, function()
@@ -88,13 +88,13 @@ const init = () => {
     });
 
 
-    let keyReset = addTileButton("Reset",25, 2*sliceSize-2, (sliceSize)+1, 1, colorUI, colorHover, answer, init);
+    let keyReset = addTileButton("Reset",25, 2*sliceSize-2, 1, 1, colorUI, colorHover, answer, init);
 
     //keyReset.addEventListener ("mouseup", init);
     keyReset.style.fontSize = 'small';
     keyReset.style.height = sliceSize-2 + "px";
 
-    let keyDelete = addTileButton("Delete",28, sliceSize-2, sliceSize+1, (sliceSize * 6)+1, colorUI, colorHover, null, null);
+    let keyDelete = addTileButton("Delete",28, sliceSize-2, 1, (sliceSize * 6)+1, colorUI, colorHover, null, null);
     keyDelete.removeEventListener ("mouseup", function() {
     target.innerHTML += button.innerHTML;
   });
@@ -120,8 +120,8 @@ const init = () => {
           }
         );
 
-        if (col > 0 && col < 5 && row > 1 && row < 6){
-          addTileButton("","Slicer_"+row+"_"+col, sliceSize/10, xpos-sliceSize/20, ypos-sliceSize/20, colorUI, colorHover, null, null);
+        if (col >= 0 && col < 5 && row > 1 && row < 6){
+          addTileButton("","Slicer_"+row+"_"+col, sliceSize/5, xpos-sliceSize/10, ypos-sliceSize/10, colorUI, colorHover, null, null);
         }
       }
     }
