@@ -5,12 +5,8 @@ const init = () => {
   const html = document.getElementsByTagName('html').item(0),
     game = document.getElementById('game');
     game.innerHTML = ""
-    // canvas = document.getElementsByTagName('canvas').item(0),
-    // context = canvas.getContext('2d'),
   const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
   const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
-  
-
 
   const resize = () => {
     // canvas.width = w = window.innerWidth;
@@ -32,21 +28,24 @@ const init = () => {
       randABC.push(nextLetter);
     }
  
-    // LOAD DICTIONARY DATA FROM JSON    
-     //let words = '{"data": ["another","bad","cat","dictionary","even","further","going","here","into","joking","laughter","mostly","night","or","possibly","questions","related","surveys","to","understand","very","well","xylophone","zebras"]}';
-
-    let words = "";    
-    fetch("./dictionary.json").then(
-        function(u){ return u.json();}
-      ).then(
-        function(json){
-          words = json;
-        }
-      )
+    // LOAD DICTIONARY DATA FROM JSON
+    // Sample JSON Data
+    let words = '{"data": ["another","bad","cat","dictionary","even","further","going","here","into","joking","laughter","mostly","night","or","possibly","questions","related","surveys","to","understand","very","well","xylophone","zebras"]}';
+    let url = 'https://github.com/russellgillespie/wordsquared/blob/015c2065548dbc80d92461ec502693147478efd8/dictionary.json';
+    
+    let myWords;
+    fetch(url)
+      .then(r =>  r.json())
+      .then(text => myWords = text)
+    
+    console.log (myWords);
+      // .then(response => console.log(response));;
+    //console.log(myWords);
+    //console.log(words);
     
     const wordDict = JSON.parse(words)["data"];
-    console.log(words);
-    console.log(wordDict);
+    //console.log(words);
+    //console.log(wordDict);
     
     let score = 0;
     let colorPrimary = "#5838ae";
@@ -61,10 +60,10 @@ const init = () => {
     
     // Set size of game frame to viewport
     vw < vh ? game.style.width = vw + "px": game.style.width = vh + "px";
-    console.log(game.style.width);
+    //console.log(game.style.width);
     game.style.height = game.style.width;
     vw < vh ? sliceSize = vw / (slices + 2) : sliceSize = vh / (slices + 2);
-    console.log(sliceSize);
+    //console.log(sliceSize);
 
     // Create Interface buttons
     let keyScore = addTileButton("Score: " + score, 27, sliceSize-2, 4*sliceSize+1, 1, colorUI, colorHover, null, null);
@@ -207,11 +206,13 @@ function updateScore(current, value, target){
 }
 
 function matchWordToDict(word, dict){
-  for (var key in dict) {
-    if (word==key){
+  var w = word.toLowerCase();
+  for (const item of dict){
+    if (item==w){
       return true;
     } else {
       continue;
     }
+    return false;
   }
 }
