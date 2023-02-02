@@ -53,6 +53,15 @@ const init = () => {
     //console.log(sliceSize);
 
     // Create Interface buttons
+
+    let keyConsole = addTileButton("", 30, sliceSize-2, 5*sliceSize+1, 1, colorUI, colorHover, null, null);
+    keyConsole.style.width = ((sliceSize-1) * 2)+"px";
+    keyConsole.style.fontSize = 'small';
+
+    let keyGuessed = addTileButton(guessedList, 30, 2*sliceSize-2, 5*sliceSize+1, 1, colorUI, colorHover, null, null);
+    keyConsole.style.height = (sliceSize*6)-1 + "px";
+    keyConsole.style.fontSize = 'small';
+
     let keyScore = addTileButton("Score: " + score, 27, sliceSize-2, 3*sliceSize+1, 1, colorUI, colorHover, null, null);
     keyScore.style.width = ((sliceSize-1) * 2)+"px";
     keyScore.removeEventListener ("mouseup", function() {
@@ -70,6 +79,8 @@ const init = () => {
         if (answer.innerHTML.includes(abc[0])){
           if (matchWordToDict(answer.innerHTML.toLowerCase(), wordDict)) {
             score = updateScore(score, answer.innerHTML.length, keyScore);
+            guessedList += answer.innerHTML;
+            keyGuessed.innerHTML = guessedList;
           } else { alert("Word not in list!")}
         } else { alert("Key Letter not used!")}
       } else { alert("Word already guessed!")}
@@ -87,27 +98,23 @@ const init = () => {
               answer.innerHTML += abc[0];
     });
 
-
-    let keyReset = addTileButton("Reset",25, 2*sliceSize-2, 1, 1, colorUI, colorHover, answer, init);
-
-    //keyReset.addEventListener ("mouseup", init);
+    let keyReset = addTileButton("Reset",29, 2*sliceSize-2, 1, 1, colorUI, colorHover, answer, init);
     keyReset.style.fontSize = 'small';
     keyReset.style.height = sliceSize-2 + "px";
 
     let keyDelete = addTileButton("Delete",28, sliceSize-2, 1, (sliceSize * 6)+1, colorUI, colorHover, null, null);
-    keyDelete.removeEventListener ("mouseup", function() {
-    target.innerHTML += button.innerHTML;
-  });
     keyDelete.addEventListener ("mouseup", function(){
       answer.innerHTML = answer.innerHTML.substring(0,answer.innerHTML.length-1);
     });
     keyDelete.style.fontSize = 'small';
 
+
+
     let grid = [];
     for (let col=0;col<slices;col++){
       for (let row=1;row<slices+1;row++){
         // Cache button metadata
-        let buttonIndex = (col-1)*slices+row-1;
+        let buttonIndex = (col)*slices+row-1;
         let buttonText = randABC[buttonIndex];
         let xpos = col*sliceSize;
         let ypos = row*sliceSize;
