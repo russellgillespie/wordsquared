@@ -203,5 +203,5 @@ function matchWordToDict(word, dict){
     } else {
       continue;
     }
-  });
+  }
 }
