@@ -122,7 +122,7 @@ const init = () => {
     keyDelete.style.fontSize = 'small';
 
 
-    leb buttonList = [];
+    let buttonList = [];
     let buttonGroups = [[],[],[],[]];
 
     // START GRID LOOP
@@ -162,7 +162,7 @@ const init = () => {
           })
           // click
           hr.addEventListener('click', function() {
-            handleSlicerButton(col, row, buttonList);
+            buttonGroups = handleSlicerButton(col, row, buttonList);
           })
         }
         //
@@ -260,7 +260,7 @@ function matchWordToDict(word, dict){
   }
 }
 
-function handleSlicerButton(x, y, buttonList){
+function handleSlicerButton(x, y, buttons){
   var groups = [[],[],[],[],[]];
   for (var b in buttonList){
     switch (b):
