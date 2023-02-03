@@ -87,7 +87,9 @@ const init = () => {
             if (matchWordToDict(answer.innerHTML.toLowerCase(), wordDict)) {
               var addPoints = answer.innerHTML.length-3;
               guessedList.push(answer.innerHTML);
-              keyGuessed.append(answer.innerHTML+"\n");
+              var tag = document.createElement("p");
+              var text = document.createTextNode(answer.innerHTML);
+              tag.appendChild(text);
               keyConsole.innerHTML = answer.innerHTML + " + " + addPoints + "!";
               score = updateScore(score, addPoints, keyScore);
             } else { keyConsole.innerHTML = "Word Not In List!"}
