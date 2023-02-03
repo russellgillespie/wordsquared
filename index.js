@@ -81,17 +81,19 @@ const init = () => {
 
     let keyEnter = addTileButton("Enter",26, sliceSize - 1, (sliceSize*4)+1, (sliceSize * 6)+1, colorUI, colorHover, null, function(){
       // Check if innerHTML is valid word
-      if (guessedList.indexOf(answer.innerHTML) == -1){
-        if (answer.innerHTML.includes(abc[0])){
-          if (matchWordToDict(answer.innerHTML.toLowerCase(), wordDict)) {
-            var addPoints = answer.innerHTML.length;
-            guessedList.push(answer.innerHTML);
-            for (var g in guessedList){keyGuessed.append(answer.innerHTML);};
-            keyConsole.innerHTML = answer.innerHTML + " + " + addPoints + "!";
-            score = updateScore(score, addPoints, keyScore);
-          } else { keyConsole.innerHTML = "Word Not In List!"}
-        } else { keyConsole.innerHTML = "Key Letter Not Used!"}
-      } else { keyConsole.innerHTML = "Word Already Guessed!"}
+      if (answer.innerHTML.length > 3){
+        if (guessedList.indexOf(answer.innerHTML) == -1){
+          if (answer.innerHTML.includes(abc[0])){
+            if (matchWordToDict(answer.innerHTML.toLowerCase(), wordDict)) {
+              var addPoints = answer.innerHTML.length-3;
+              guessedList.push(answer.innerHTML.value);
+              keyGuessed.append("<p>"+answer.innerHTML+"</p>");
+              keyConsole.innerHTML = answer.innerHTML + " + " + addPoints + "!";
+              score = updateScore(score, addPoints, keyScore);
+            } else { keyConsole.innerHTML = "Word Not In List!"}
+          } else { keyConsole.innerHTML = "Key Letter Not Used!"}
+        } else { keyConsole.innerHTML = "Word Already Guessed!"}
+      } else { keyConsole.innerHTML = "Word Too Short!"}
      });
 
      keyEnter.style.height = sliceSize-2 +"px";
