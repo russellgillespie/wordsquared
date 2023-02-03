@@ -142,8 +142,8 @@ const init = () => {
         b.addEventListener('mouseover', () => {
           b.style.height = sliceSize*5;
         })
-        b.addEventListener('mouseover', () => {
-          b.style.height = sliceSize*5;
+        b.addEventListener('mouseout', () => {
+          b.style.height = sliceSize/5;
         })
         let c = b;
         c.style.width = sliceSize*5;
