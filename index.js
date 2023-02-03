@@ -81,11 +81,11 @@ const init = () => {
 
     let keyEnter = addTileButton("Enter",26, sliceSize - 1, (sliceSize*4)+1, (sliceSize * 6)+1, colorUI, colorHover, null, function(){
       // Check if innerHTML is valid word
-      if (guessedList.includes(answer + "\n")==false){
+      if (guessedList.indexOf(answer) == -1)){
         if (answer.innerHTML.includes(abc[0])){
           if (matchWordToDict(answer.innerHTML.toLowerCase(), wordDict)) {
             var addPoints = answer.innerHTML.length;
-            guessedList += '"' + answer.innerHTML + '", ';
+            guessedList.push(answer.innerHTML);
             keyGuessed.innerHTML = guessedList;
             keyConsole.innerHTML = answer.innerHTML + " + " + addPoints + "!";
             score = updateScore(score, addPoints, keyScore);
