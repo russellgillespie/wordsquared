@@ -86,7 +86,7 @@ const init = () => {
           if (answer.innerHTML.includes(abc[0])){
             if (matchWordToDict(answer.innerHTML.toLowerCase(), wordDict)) {
               var addPoints = answer.innerHTML.length-3;
-              guessedList.push(answer.innerHTML.value);
+              guessedList.push(answer.innerHTML);
               keyGuessed.append(answer.innerHTML+"\n");
               keyConsole.innerHTML = answer.innerHTML + " + " + addPoints + "!";
               score = updateScore(score, addPoints, keyScore);
