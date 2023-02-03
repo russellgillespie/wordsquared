@@ -153,7 +153,7 @@ const init = () => {
                 let b = addTileButton(buttonText, buttonIndex, sliceSize - 2, xpos + 1, ypos + 1, colorLight, colorHover, null, function() {
                     answer.innerHTML += buttonText;
                 });
-                buttonList.push({"x": col, "y": row, "button": b);
+                buttonList.push({"x": col, "y": row, "button": b});
 
                 // Create XY Slicer Button
                 if (col > 0 && col < 5 && row > 1 && row < 6) {
