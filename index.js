@@ -70,7 +70,7 @@ const init = () => {
 
     let keyScore = addTileButton("Score: " + score, 27, sliceSize-2, 3*sliceSize+1, 1, colorUI, colorHover, null, null);
     keyScore.style.width = ((sliceSize-1) * 2)+"px";
-    keyScore.removeEventListener ("mouseup", function() {
+    keyScore.removdeEventListener ("mouseup", function() {
     target.innerHTML += button.innerHTML;
   });
     keyScore.style.fontSize = 'small';
@@ -87,7 +87,7 @@ const init = () => {
             if (matchWordToDict(answer.innerHTML.toLowerCase(), wordDict)) {
               var addPoints = answer.innerHTML.length-3;
               guessedList.push(answer.innerHTML.value);
-              keyGuessed.append("<p>"+answer.innerHTML+"</p>");
+              keyGuessed.append(answer.innerHTML+"\n");
               keyConsole.innerHTML = answer.innerHTML + " + " + addPoints + "!";
               score = updateScore(score, addPoints, keyScore);
             } else { keyConsole.innerHTML = "Word Not In List!"}
@@ -136,6 +136,15 @@ const init = () => {
             answer.innerHTML += buttonText;
           }
         );
+        b.addEventListener('mouseover', () => {
+          b.style.height = sliceSize*5;
+        })
+        b.addEventListener('mouseover', () => {
+          b.style.height = sliceSize*5;
+        })
+        let c = b;
+        c.style.width = sliceSize*5;
+        c.style.height = sliceSize/5;
 
         if (col > 0 && col < 5 && row > 1 && row < 6){
           addTileButton("","Slicer_"+row+"_"+col, sliceSize/5, xpos-sliceSize/10, ypos-sliceSize/10, colorUI, colorHover, null, null);
