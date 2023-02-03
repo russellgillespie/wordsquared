@@ -153,7 +153,7 @@ const init = () => {
                 let b = addTileButton(buttonText, buttonIndex, sliceSize - 2, xpos + 1, ypos + 1, colorLight, colorHover, null, function() {
                     answer.innerHTML += buttonText;
                 });
-                buttonList.push(b)
+                buttonList.push({"x": col, "y": row, "button": b);
 
                 // Create XY Slicer Button
                 if (col > 0 && col < 5 && row > 1 && row < 6) {
@@ -280,21 +280,21 @@ function handleSlicerButton(x, y, buttons) {
     ];
     for (var b in buttons) {
         switch (b) {
-            case b[0] < x && b[1] < y:
+            case b["x"] < x && b["y"] < y:
                 //handle;
-                b.style.backgroundColor = "#ff3333";
+                b["button"].style.backgroundColor = "#ff3333";
                 groups[0].append(b);
-            case b[0] >= x && b[1] < y:
+            case b["x"] >= x && b["y"] < y:
                 //handle;
-                b.style.backgroundColor = "#ffff33";
+                b["button"].style.backgroundColor = "#ffff33";
                 groups[1].append(b);
-            case b[0] < x && b[1] >= y:
+            case b["x"] < x && b["y"] >= y:
                 //handle;
-                b.style.backgroundColor = "#3333ff";
+                b["button"].style.backgroundColor = "#3333ff";
                 groups[2].append(b);
-            case b[0] >= x && b[1] >= y:
+            case b["x"] >= x && b["y"] >= y:
                 //handle;
-                b.style.backgroundColor = "#33ffff";
+                b["button"].style.backgroundColor = "#33ffff";
                 groups[3].append(b);
             default:
                 console.log("Array range error assigning button groups.");
