@@ -53,8 +53,8 @@ const init = () => {
         let colorUIDark = "#015589";
         let colorConsole = "rgba(200, 225, 255, 0.95)"
         let colorHover = "rgba(200, 225, 255, 0.9)";
-        let colorSlicer = "rgba(50, 200, 25, 1)";
-        let colorSlicerHover = "rgba(233, 125, 125, 0.75)";
+        let colorSlicer = "rgba(75, 187, 25, 1)";
+        let colorSlicerHover = "#deca45";
         let slices = 5;
         let sliceSize = 0;
 
@@ -78,7 +78,7 @@ const init = () => {
         keyGuessed.style.fontSize = 'x-small';
         keyGuessed.classList.add('guessed');
 
-        let keyCredits = addTileButton("WordSquared\n by Gillespie", 30, sliceSize - 2, 5 * sliceSize + 1, 6 * sliceSize + 1, colorUIDark, colorUIDark, null, null);
+        let keyCredits = addTileButton("WordSquared\n by Gillespie", 30, sliceSize - 2, 5 * sliceSize + 1, 6 * sliceSize + 1, colorConsole, colorConsole, null, null);
         keyCredits.style.width = (sliceSize * 2) - 2 + "px";
         keyCredits.style.height = (sliceSize - 2) + "px";
         keyCredits.style.fontSize = 'small';
@@ -90,11 +90,13 @@ const init = () => {
         });
         keyScore.style.fontSize = 'med';
 
-        let answer = addTileButton("", 26, sliceSize * 3 - 2, sliceSize + 1, (sliceSize * 6) + 1, colorUI, colorHover, null, {});
+        let answer = addTileButton("", 26, sliceSize * 3 - 2, sliceSize + 1, (sliceSize * 6) + 1, 'black', 'black', null, {});
         answer.style.height = sliceSize - 2 + "px";
-        answer.style.fontSize = 'small';
+        answer.style.fontSize = 'xx-large';
+        answer.classList.add('answer');
+        answer.style.color = colorConsole;
 
-        let keyEnter = addTileButton("RTN", 26, sliceSize - 1, (sliceSize * 4) + 1, (sliceSize * 6) + 1, colorUI, colorHover, null, function() {
+        let keyEnter = addTileButton("RTN", 26, sliceSize - 1, (sliceSize * 4) + 1, (sliceSize * 6) + 1, colorUIMedium, colorHover, null, function() {
             // Check if innerHTML is valid word
             answerText = answer.innerHTML;
             var count = countUnique(answerGroups);
@@ -108,7 +110,7 @@ const init = () => {
                                 if (matchWordToDict(answerText.toLowerCase(), wordDict)) {
                                     var addPoints = answerText.length - 3;
                                     guessedList.push(answerText);
-                                    if (keyGuessed.innerHTML === tutorial) {
+                                    if (score==0) {
                                       keyGuessed.innerHTML = "";
                                     }
                                     var tag = document.createElement("p");
@@ -130,10 +132,10 @@ const init = () => {
                         keyConsole.innerHTML = "WORD Too Short!";
                     }
                 } else {
-                    keyConsole.innerHTML = "Used Too Many QUADRANTs!";
+                    keyConsole.innerHTML = "Used Too Many QUADRANTS!";
                 }
             } else {
-                keyConsole.innerHTML = "Click A QUADRANT SLICER To Start!";
+                keyConsole.innerHTML = "Click A GREEN QUADRANT SLICER To Start!";
             }
         });
 
@@ -145,7 +147,7 @@ const init = () => {
         keyEnter.style.fontSize = 'small';
 
 
-        let keyLetter = addTileButton(abc[0], 25, sliceSize - 2, (2 * sliceSize) + 1, 1, colorSecondary, colorUILight, answer, function() {
+        let keyLetter = addTileButton(abc[0], 25, sliceSize - 2, (2 * sliceSize) + 1, 1, colorUILight, colorHover, answer, function() {
             answer.innerHTML += abc[0];
         });
 
@@ -153,7 +155,7 @@ const init = () => {
         keyReset.style.fontSize = 'x-large';
         keyReset.style.height = sliceSize - 2 + "px";
 
-        let keyDelete = addTileButton("DEL", 28, sliceSize - 2, 1, (sliceSize * 6) + 1, colorUI, colorHover, null, null);
+        let keyDelete = addTileButton("DEL", 28, sliceSize - 2, 1, (sliceSize * 6) + 1, colorUIReset, colorHover, null, null);
         keyDelete.addEventListener("mouseup", function() {
             answer.innerHTML = answer.innerHTML.substring(0, answer.innerHTML.length - 1);
         });
@@ -189,7 +191,7 @@ const init = () => {
 
                 // Create XY Slicer Button
                 if (col > 0 && col < 5 && row > 1 && row < 6) {
-                    var hr = addTileButton("", "Slicer_" + row + "_" + col, sliceSize / 5, xpos - sliceSize / 10, ypos - sliceSize / 10, colorSlicer, colorSlicerHover, null, null);
+                    var hr = addTileButton("", "Slicer_" + row + "_" + col, sliceSize / 5, xpos - sliceSize / 10, ypos - sliceSize / 10, colorSlicer, colorUIReset, null, null);
                     //// Add Event Handlers
                     // click
                     hr.addEventListener('mouseup', function() {
@@ -297,28 +299,28 @@ function handleSlicerButton(x, y, buttons){
 
         if (b["x"] < x && b["y"] < y) {
             //handle;
-            b = slicerHelper(b, "#990010", 0);
+            b = slicerHelper(b, "#55ce55", 0);
             b["group"] = 0;
             groups[0].push(b);
             continue;
         }
         else if (b["x"] >= x && b["y"] < y) {
             //handle;
-            b = slicerHelper(b, "#109933", 1);
+            b = slicerHelper(b, "#9978fa", 1);
             b["group"] = 1;
             groups[1].push(b);
             continue;
         }
         else if (b["x"] < x && b["y"] >= y) {
             //handle;
-            b = slicerHelper(b, "#331099", 2);
+            b = slicerHelper(b, "#dd9934", 2);
             b["group"] = 2;
             groups[2].push(b);
             continue;
         }
         else if (b["x"] >= x && b["y"] >= y) {
             //handle;
-            b = slicerHelper(b, "#993310", 3);
+            b = slicerHelper(b, "#2245bc", 3);
             b["group"] = 3;
             groups[3].push(b);
             continue;

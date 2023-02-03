@@ -12,6 +12,7 @@ h4 {
   color: white;
   font-size: 2vmin;
 }
+
 p, li
 {
   color: black;
@@ -19,9 +20,15 @@ p, li
   text-align : center;
 }
 
+
+
 h {
   font-family : monospace, monospace;
   text-align : center;
+}
+
+.answer {
+  font-weight: bolder;
 }
 
 #gameContainer {
