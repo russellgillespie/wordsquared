@@ -139,19 +139,25 @@ const init = () => {
             answer.innerHTML += buttonText;
           }
         );
-        b.addEventListener('mouseover', function() {
-          b.style.height = sliceSize*5;
-        });
-        b.addEventListener('mouseout', function() {
-          b.style.height = sliceSize/5;
-        });
-        let c = b;
-        c.style.width = sliceSize*5;
-        c.style.height = sliceSize/5;
 
         if (col > 0 && col < 5 && row > 1 && row < 6){
-          addTileButton("","Slicer_"+row+"_"+col, sliceSize/5, xpos-sliceSize/10, ypos-sliceSize/10, colorUI, colorHover, null, null);
+          var hr = addTileButton("","Slicer_"+row+"_"+col, sliceSize/5, xpos-sliceSize/10, ypos-sliceSize/10, colorUI, colorHover, null, null);
+          let vr = hr;
+          hr.addEventListener('mouseover', function() {
+            hr.style.height = sliceSize*5+"px";
+          })
+          hr.addEventListener('mouseout', function() {
+            hr.style.height = sliceSize/5+"px";
+          })
+          vr.addEventListener('mouseover', function() {
+            vr.style.width = sliceSize*5+"px";
+          })
+          vr.addEventListener('mouseout', function() {
+            vr.style.width = sliceSize/5+"px";
+          })
         }
+
+
       }
     }
 
