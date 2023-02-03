@@ -263,25 +263,25 @@ function matchWordToDict(word, dict){
 function handleSlicerButton(x, y, buttons){
   var groups = [[],[],[],[],[]];
   for (var b in buttonList){
-    switch (b):
-      case b[0] < x && b[1] < y:
-        //handle;
-        b.style.backgroundColor = "#ff3333";
-        groups[0].append(b);
-      case b[0] >= x && b[1] < y:
-        //handle;
-        b.style.backgroundColor = "#ffff33";
-        groups[1].append(b);
-      case b[0] < x && b[1] >= y:
-        //handle;
-        b.style.backgroundColor = "#3333ff";
-        groups[2].append(b);
-      case b[0] >= x && b[1] >= y:
-        //handle;
-        b.style.backgroundColor = "#33ffff";
-        groups[3].append(b);
-      default:
-        console.log("Array range error assigning button groups.");
+    switch (b){case b[0] < x && b[1] < y:
+      //handle;
+      b.style.backgroundColor = "#ff3333";
+      groups[0].append(b);
+    case b[0] >= x && b[1] < y:
+      //handle;
+      b.style.backgroundColor = "#ffff33";
+      groups[1].append(b);
+    case b[0] < x && b[1] >= y:
+      //handle;
+      b.style.backgroundColor = "#3333ff";
+      groups[2].append(b);
+    case b[0] >= x && b[1] >= y:
+      //handle;
+      b.style.backgroundColor = "#33ffff";
+      groups[3].append(b);
+    default:
+      console.log("Array range error assigning button groups.");
+    }
   }
   return groups;
 }
