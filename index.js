@@ -81,12 +81,12 @@ const init = () => {
 
     let keyEnter = addTileButton("Enter",26, sliceSize - 1, (sliceSize*4)+1, (sliceSize * 6)+1, colorUI, colorHover, null, function(){
       // Check if innerHTML is valid word
-      if (guessedList.indexOf(answer) == -1){
+      if (guessedList.indexOf(answer.innerHTML) == -1){
         if (answer.innerHTML.includes(abc[0])){
           if (matchWordToDict(answer.innerHTML.toLowerCase(), wordDict)) {
             var addPoints = answer.innerHTML.length;
             guessedList.push(answer.innerHTML);
-            keyGuessed.innerHTML = guessedList;
+            for (var g in guessedList){keyGuessed.innerHTML += "<p>"+answer.innterHTML+"</p>"};
             keyConsole.innerHTML = answer.innerHTML + " + " + addPoints + "!";
             score = updateScore(score, addPoints, keyScore);
           } else { keyConsole.innerHTML = "Word Not In List!"}
