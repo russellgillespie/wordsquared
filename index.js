@@ -153,14 +153,14 @@ const init = () => {
           })
         }
 
-        if (row == 2 && col > 0 && col < 5) {
-          var ruler = addTileButton("", "ruler-"+col, sliceSize*5, xpos-sliceSize/10, sliceSize, colorUI, colorHover, null, null);
-          ruler.style.width = sliceSize/5;
+        if (row == 1 && col > 0 && col < 5) {
+          var ruler = addTileButton("", "ruler-"+col, sliceSize/5, xpos-sliceSize/10, sliceSize, colorUI, colorHover, null, null);
+          ruler.style.height = sliceSize*5;
           ruler.classList.add('vRuler-'+col);
         }
         if (col == 1 && row > 1 && row < 6) {
-          var ruler = addTileButton("", "ruler-"+col, sliceSize*5, 0, ypos-sliceSize/10, colorUI, colorHover, null, null);
-          ruler.style.height = sliceSize/5;
+          var ruler = addTileButton("", "ruler-"+col, sliceSize/5, 0, ypos-sliceSize/10, colorUI, colorHover, null, null);
+          ruler.style.width = sliceSize*5;
           ruler.classList.add('hRuler-'+row);
         }
 
