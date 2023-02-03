@@ -12,7 +12,7 @@ const init = () => {
 
 
 
-    const tutorial = "<h4>WORDSQUARED</br>EDWORDSQUAR</br>AREDWORDSQU<br>UAREDWORDSQ</br>SQUAREDWORD</br></h4><p>–––––––––––––––––––––</br>– HOW TO PLAY –</br>–––––––––––––––––––––</p><p>– 1 –</br>Click a GREEN SLICER button on the grid to separate the alphabet into QUADRANTS.</p><p>– 2 –</br> Combine the YELLOW KEY LETTER at the top with letters from only one QUADRANT at at time!</p> <p>–––––––––––––––––––––</br>– HOW MANY POINTS –</br>– CAN YOU SCORE?! –</br>–––––––––––––––––––––<br></p>"
+    const tutorial = "<h4>WORDSQUARED</br>EDWORDSQUAR</br>AREDWORDSQU<br>UAREDWORDSQ</br>SQUAREDWORD</br></h4></br>–––––––––––––––––––––</br>– HOW TO PLAY –</br>–––––––––––––––––––––</br>-------- 1 --------</br>Click a GREEN SLICER button on the grid to separate the alphabet into QUADRANTS.</br>-------- 2 --------</br> Combine the YELLOW KEY LETTER at the top with letters from only one QUADRANT at at time!</br>–––––––––––––––––––––</br>– HOW MANY POINTS –</br>– CAN YOU SCORE?! –</br>–––––––––––––––––––––<br></p>"
 
     const resize = () => {
         // canvas.width = w = window.innerWidth;
@@ -53,8 +53,8 @@ const init = () => {
         let colorUIDark = "#015589";
         let colorConsole = "rgba(200, 225, 255, 0.95)"
         let colorHover = "rgba(200, 225, 255, 0.9)";
-        let colorSlicer = "rgba(75, 187, 25, 1)";
-        let colorSlicerHover = "#deca45";
+        let colorSlicer = "rgba(69, 187, 25, .5)";
+        let colorSlicerHover = "rgba(69, 187, 25, .9)";
         let slices = 5;
         let sliceSize = 0;
 
@@ -191,7 +191,7 @@ const init = () => {
 
                 // Create XY Slicer Button
                 if (col > 0 && col < 5 && row > 1 && row < 6) {
-                    var hr = addTileButton("", "Slicer_" + row + "_" + col, sliceSize / 5, xpos - sliceSize / 10, ypos - sliceSize / 10, colorSlicer, colorUIReset, null, null);
+                    var hr = addTileButton("", "Slicer_" + row + "_" + col, sliceSize * .3, xpos - sliceSize*.15, ypos - sliceSize*.15, colorSlicer, colorSlicerHover, null, null);
                     //// Add Event Handlers
                     // click
                     hr.addEventListener('mouseup', function() {
