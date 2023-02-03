@@ -83,7 +83,7 @@ const init = () => {
         keyCredits.style.height = (sliceSize - 2) + "px";
         keyCredits.style.fontSize = 'small';
 
-        let keyScore = addTileButton("SCORE: " + score, 27, sliceSize - 2, 3 * sliceSize + 1, 1, colorUIMedium, colorUIMedium, null, null);
+        let keyScore = addTileButton("" + score, 27, sliceSize - 2, 3 * sliceSize + 1, 1, colorUIMedium, colorUIMedium, null, null);
         keyScore.style.width = ((sliceSize * 2) - 2) + "px";
         keyScore.removeEventListener("mouseup", function() {
             target.innerHTML += button.innerHTML;
@@ -269,7 +269,7 @@ function addTileButton(label, index, size, x, y, color, hover, target, listener)
 
 function updateScore(current, value, target) {
     current += value;
-    target.innerHTML = "Score: " + current;
+    target.innerHTML = current;
     return current;
 }
 
