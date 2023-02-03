@@ -122,10 +122,13 @@ const init = () => {
     keyDelete.style.fontSize = 'small';
 
 
+    leb buttonList = [];
+    let buttonGroups = [[],[],[],[]];
 
-    let grid = [];
+    // START GRID LOOP
     for (let col=0;col<slices;col++){
       for (let row=1;row<slices+1;row++){
+
         // Cache button metadata
         let buttonIndex = (col)*slices+row-1;
         let buttonText = randABC[buttonIndex];
@@ -134,41 +137,50 @@ const init = () => {
         let xoff = (col+1)*sliceSize;
         let yoff = (row+1)*sliceSize;
 
+        // Create XY Grid Button
         let b = addTileButton(buttonText, buttonIndex, sliceSize-2, xpos+1, ypos+1, colorLight, colorHover, null, function()
           {
             answer.innerHTML += buttonText;
           }
         );
+        buttonList.append(b)
 
+        // Create XY Slicer Button
         if (col > 0 && col < 5 && row > 1 && row < 6){
           var hr = addTileButton("","Slicer_"+row+"_"+col, sliceSize/5, xpos-sliceSize/10, ypos-sliceSize/10, colorUI, colorHover, null, null);
           let vr = hr;
+          //// Add Event Handlers
+          // mouseover
           hr.addEventListener('mouseover', function() {
             hr.classList.add('ruler-'+row);
             hr.classList.add('ruler-'+col);
           })
+          // mouseout
           hr.addEventListener('mouseout', function() {
             hr.classList.remove('ruler-'+row);
             hr.classList.remove('ruler-'+col);
           })
+          // click
+          hr.addEventListener('click', function() {
+            handleSlicerButton(col, row, buttonList);
+          })
         }
-
-        if (row == 1 && col > 0 && col < 5) {
-          var vRuler = addTileButton("", "ruler-"+col, sliceSize/5, xpos-sliceSize/10, sliceSize, colorUI, colorHover, null, null);
-          vRuler.style.height = sliceSize*5;
-          vRuler.style.width = sliceSize/5;
-          vRuler.classList.add('vRuler-'+col);
-        }
-        if (col == 1 && row > 1 && row < 6) {
-          var hRuler = addTileButton("", "ruler-"+col, sliceSize/5, 0, ypos-sliceSize/10, colorUI, colorHover, null, null);
-          hRuler.style.height = sliceSize/5;
-          hRuler.style.width = sliceSize*5;
-          hRuler.classList.add('hRuler-'+row);
-        }
+        //
+        // if (row == 1 && col > 0 && col < 5) {
+        //   var vRuler = addTileButton("", "ruler-"+col, sliceSize/5, xpos-sliceSize/10, sliceSize, colorUI, colorHover, null, null);
+        //   vRuler.style.height = sliceSize*5;
+        //   vRuler.style.width = sliceSize/5;
+        //   vRuler.classList.add('vRuler-'+col);
+        // }
+        // if (col == 1 && row > 1 && row < 6) {
+        //   var hRuler = addTileButton("", "ruler-"+col, sliceSize/5, 0, ypos-sliceSize/10, colorUI, colorHover, null, null);
+        //   hRuler.style.height = sliceSize/5;
+        //   hRuler.style.width = sliceSize*5;
+        //   hRuler.classList.add('hRuler-'+row);
+        // }
       }
     }
-
-  };
+  }; // END GRID LOOP
 
   const loop = (t) => {
 
@@ -246,4 +258,30 @@ function matchWordToDict(word, dict){
     }
     return false;
   }
+}
+
+function handleSlicerButton(x, y, buttonList){
+  var groups = [[],[],[],[],[]];
+  for (var b in buttonList){
+    switch (b):
+      case b[0] < x && b[1] < y:
+        //handle;
+        b.style.backgroundColor = "#ff3333";
+        groups[0].append(b);
+      case b[0] >= x && b[1] < y:
+        //handle;
+        b.style.backgroundColor = "#ffff33";
+        groups[1].append(b);
+      case b[0] < x && b[1] >= y:
+        //handle;
+        b.style.backgroundColor = "#3333ff";
+        groups[2].append(b);
+      case b[0] >= x && b[1] >= y:
+        //handle;
+        b.style.backgroundColor = "#33ffff";
+        groups[3].append(b);
+      default:
+        console.log("Array range error assigning button groups.");
+  }
+  return groups;
 }
