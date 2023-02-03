@@ -2,9 +2,26 @@ html {
   background-color: black;
   width : 100%;
   overflow: hidden;
+  color: black;
+  font-family: monospace, monospace;
 }
 canvas {
   position: absolute;
+}
+h4 {
+  color: white;
+  font-size: 2vmin;
+}
+p, li
+{
+  color: black;
+  font-size: 1.5vmin;
+  text-align : center;
+}
+
+h {
+  font-family : monospace, monospace;
+  text-align : center;
 }
 
 #gameContainer {
@@ -26,9 +43,18 @@ canvas {
 }
 
 .gameButton {
+  color: black;
   position : absolute;
 }
 
 .gameButton :hover {
   background-color: "#898989";
+}
+
+.slicer-hidden {
+  display: none;
+}
+
+.guessed  {
+  text-align : center;
 }
