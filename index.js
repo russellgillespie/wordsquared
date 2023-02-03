@@ -90,6 +90,7 @@ const init = () => {
               var tag = document.createElement("p");
               var text = document.createTextNode(answer.innerHTML);
               tag.appendChild(text);
+              keyGuessed.appendChild(tag);
               keyConsole.innerHTML = answer.innerHTML + " + " + addPoints + "!";
               score = updateScore(score, addPoints, keyScore);
             } else { keyConsole.innerHTML = "Word Not In List!"}
