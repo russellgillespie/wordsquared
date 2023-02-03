@@ -278,7 +278,7 @@ function handleSlicerButton(x, y, buttons) {
         [],
         []
     ];
-    for (var b in buttonList) {
+    for (var b in buttons) {
         switch (b) {
             case b[0] < x && b[1] < y:
                 //handle;
