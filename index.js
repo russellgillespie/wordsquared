@@ -54,22 +54,22 @@ const init = () => {
 
     // Create Interface buttons
 
-    let keyConsole = addTileButton("", 30, sliceSize-2, 5*sliceSize+1, 1, colorUI, colorHover, null, null);
-    keyConsole.style.width = (sliceSize-1) * 2 + "px";
-    keyConsole.style.height = (sliceSize-1) + "px";
+    let keyConsole = addTileButton("", 30, sliceSize-2, 5*sliceSize+1, 1, colorLight, colorLight, null, null);
+    keyConsole.style.width = (sliceSize*2) - 2 + "px";
+    keyConsole.style.height = (sliceSize-2) + "px";
     keyConsole.style.fontSize = 'small';
 
-    let keyGuessed = addTileButton(guessedList, 30, 2*sliceSize-2, 5*sliceSize+1, sliceSize+1, colorUI, colorHover, null, null);
-    keyGuessed.style.height = (sliceSize*5)-1 + "px";
+    let keyGuessed = addTileButton(guessedList, 30, 2*sliceSize-2, 5*sliceSize+1, sliceSize+1, colorUI, colorUI, null, null);
+    keyGuessed.style.height = (sliceSize*5)-2 + "px";
     keyGuessed.style.fontSize = 'small';
 
-    let keyCredits = addTileButton("wordsquared\n by Gillespie", 30, sliceSize-2, 5*sliceSize+1, 6*sliceSize+1, colorUI, colorHover, null, null);
-    keyCredits.style.width = (sliceSize-1) * 2 + "px";
-    keyCredits.style.height = (sliceSize-1) + "px";
+    let keyCredits = addTileButton("wordsquared\n by Gillespie", 30, sliceSize-2, 5*sliceSize+1, 6*sliceSize+1, colorUI, colorUI, null, null);
+    keyCredits.style.width = (sliceSize*2) - 2 + "px";
+    keyCredits.style.height = (sliceSize-2) + "px";
     keyCredits.style.fontSize = 'small';
 
-    let keyScore = addTileButton("Score: " + score, 27, sliceSize-2, 3*sliceSize+1, 1, colorUI, colorHover, null, null);
-    keyScore.style.width = ((sliceSize-1) * 2)+"px";
+    let keyScore = addTileButton("Score: " + score, 27, sliceSize-2, 3*sliceSize+1, 1, colorUI, colorUI, null, null);
+    keyScore.style.width = ((sliceSize*2) - 2)+"px";
     keyScore.removeEventListener ("mouseup", function() {
     target.innerHTML += button.innerHTML;
   });
