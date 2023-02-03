@@ -151,9 +151,11 @@ const init = () => {
           })
           vr.addEventListener('mouseover', function() {
             vr.style.width = sliceSize*5+"px";
+            vr.style.height = sliceSize/5+"px";
           })
           vr.addEventListener('mouseout', function() {
             vr.style.width = sliceSize/5+"px";
+            vr.style.height = sliceSize/5+"px";
           })
         }
 
