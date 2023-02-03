@@ -81,7 +81,7 @@ const init = () => {
 
     let keyEnter = addTileButton("Enter",26, sliceSize - 1, (sliceSize*4)+1, (sliceSize * 6)+1, colorUI, colorHover, null, function(){
       // Check if innerHTML is valid word
-      if (guessedList.indexOf(answer) == -1)){
+      if (guessedList.indexOf(answer) == -1){
         if (answer.innerHTML.includes(abc[0])){
           if (matchWordToDict(answer.innerHTML.toLowerCase(), wordDict)) {
             var addPoints = answer.innerHTML.length;
