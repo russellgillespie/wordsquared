@@ -70,7 +70,7 @@ const init = () => {
 
     let keyScore = addTileButton("Score: " + score, 27, sliceSize-2, 3*sliceSize+1, 1, colorUI, colorHover, null, null);
     keyScore.style.width = ((sliceSize-1) * 2)+"px";
-    keyScore.removdeEventListener ("mouseup", function() {
+    keyScore.removeEventListener ("mouseup", function() {
     target.innerHTML += button.innerHTML;
   });
     keyScore.style.fontSize = 'small';
