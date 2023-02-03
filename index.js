@@ -139,12 +139,12 @@ const init = () => {
             answer.innerHTML += buttonText;
           }
         );
-        b.addEventListener('mouseover', () => {
+        b.addEventListener('mouseover', function() {
           b.style.height = sliceSize*5;
-        })
-        b.addEventListener('mouseout', () => {
+        });
+        b.addEventListener('mouseout', function() {
           b.style.height = sliceSize/5;
-        })
+        });
         let c = b;
         c.style.width = sliceSize*5;
         c.style.height = sliceSize/5;
