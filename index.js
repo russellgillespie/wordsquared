@@ -144,21 +144,22 @@ const init = () => {
           var hr = addTileButton("","Slicer_"+row+"_"+col, sliceSize/5, xpos-sliceSize/10, ypos-sliceSize/10, colorUI, colorHover, null, null);
           let vr = hr;
           hr.addEventListener('mouseover', function() {
-            hr.style.height = sliceSize*5+"px";
-            hr.style.left = 0+"px";
+            hr.classList.add('ruler-'+row);
+            hr.classList.add('ruler-'+col);
           })
           hr.addEventListener('mouseout', function() {
-            hr.style.height = sliceSize/5+"px";
-            hr.style.left = xpos-sliceSize/10+"px";
+            hr.classList.remove('ruler-'+row);
+            hr.classList.remove('ruler-'+col);
           })
-          vr.addEventListener('mouseover', function() {
-            vr.style.height = sliceSize/5+"px";
-            hr.style.top = 0+"px";
-          })
-          vr.addEventListener('mouseout', function() {
-            vr.style.height = sliceSize/5+"px";
-            hr.style.top = ypos-sliceSize/10+"px";
-          })
+        }
+
+        if (row == 1 && col > 0 && col < 5) {
+          var ruler = addTileButton("vRuler-"+col, "ruler-"+col, sliceSize/5, xpos-sliceSize/10, sliceSize, colorUI, colorHover, null, null);
+          ruler.classList.add('vRuler-'+col);
+        }
+        if (col == 0 && row > 0 && row < 5) {
+          var ruler = addTileButton("vRuler-"+col, "ruler-"+col, sliceSize/5, 0, ypos-sliceSize/10, colorUI, colorHover, null, null);
+          ruler.classList.add('hRuler-'+row);
         }
 
 
