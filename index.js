@@ -145,17 +145,19 @@ const init = () => {
           let vr = hr;
           hr.addEventListener('mouseover', function() {
             hr.style.height = sliceSize*5+"px";
+            hr.style.left = 0+"px";
           })
           hr.addEventListener('mouseout', function() {
             hr.style.height = sliceSize/5+"px";
+            hr.style.left = xpos-sliceSize/10+"px";
           })
           vr.addEventListener('mouseover', function() {
-            vr.style.width = sliceSize*5+"px";
             vr.style.height = sliceSize/5+"px";
+            hr.style.top = 0+"px";
           })
           vr.addEventListener('mouseout', function() {
-            vr.style.width = sliceSize/5+"px";
             vr.style.height = sliceSize/5+"px";
+            hr.style.top = ypos-sliceSize/10+"px";
           })
         }
 
