@@ -12,7 +12,7 @@ const init = () => {
 
 
 
-    const tutorial = "<h4>WORDSQUARED</br>EDWORDSQUAR</br>AREDWORDSQU<br>UAREDWORDSQ</br>SQUAREDWORD</br></h4></br>–––––––––––––––––––––</br>– HOW TO PLAY –</br>–––––––––––––––––––––</br>-------- 1 --------</br>Click a GREEN SLICER button on the grid to separate the alphabet into QUADRANTS.</br>-------- 2 --------</br> Combine the YELLOW KEY LETTER at the top with letters from only one QUADRANT at at time!</br>–––––––––––––––––––––</br>– HOW MANY POINTS –</br>– CAN YOU SCORE?! –</br>–––––––––––––––––––––<br></p>"
+    const tutorial = "<p>WordSquared</p>– HOW TO PLAY –</br>--- 1 ---</br>Click a GREEN SLICER button on the grid to separate the alphabet into QUADRANTS.</br>--- 2 ---</br> Combine the YELLOW KEY LETTER at the top with letters from only one QUADRANT at at time!</br>–––</br>HOW MANY POINTS</br>CAN YOU SCORE?!</p>"
 
     const resize = () => {
         // canvas.width = w = window.innerWidth;
@@ -78,7 +78,7 @@ const init = () => {
         keyGuessed.style.fontSize = 'x-small';
         keyGuessed.classList.add('guessed');
 
-        let keyCredits = addTileButton("WordSquared\n by Gillespie", 30, sliceSize - 2, 5 * sliceSize + 1, 6 * sliceSize + 1, colorConsole, colorConsole, null, null);
+        let keyCredits = addTileButton("Gillespie", 30, sliceSize - 2, 5 * sliceSize + 1, 6 * sliceSize + 1, colorConsole, colorConsole, null, null);
         keyCredits.style.width = (sliceSize * 2) - 2 + "px";
         keyCredits.style.height = (sliceSize - 2) + "px";
         keyCredits.style.fontSize = 'small';
@@ -117,7 +117,7 @@ const init = () => {
                                     var text = document.createTextNode(answer.innerHTML);
                                     tag.appendChild(text);
                                     keyGuessed.appendChild(tag);
-                                    keyConsole.innerHTML = answer.innerHTML + " + " + addPoints + "!";
+                                    keyConsole.innerHTML = answer.innerHTML + "</br>+ " + addPoints + "!";
                                     score = updateScore(score, addPoints, keyScore);
                                 } else {
                                     keyConsole.innerHTML = "WORD Not In Dictionary!";
