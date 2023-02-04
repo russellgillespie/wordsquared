@@ -118,22 +118,22 @@ const init = () => {
                                     keyConsole.innerHTML = answer.innerHTML + "</br>+ " + addPoints + "!";
                                     score = updateScore(score, addPoints, keyScore);
                                 } else {
-                                    keyConsole.innerHTML = "WORD Not In Dictionary!";
+                                    keyConsole.innerHTML = "Not In</br>DICTIONARY!";
                                 }
                             } else {
-                                keyConsole.innerHTML = "KEY LETTER Not Used!";
+                                keyConsole.innerHTML = "KEY LETTER</br>Not Used!";
                             }
                         } else {
-                            keyConsole.innerHTML = "WORD Already Guessed!";
+                            keyConsole.innerHTML = "Already</br>Guessed!";
                         }
                     } else {
-                        keyConsole.innerHTML = "WORD Too Short!";
+                        keyConsole.innerHTML = "WORD</br>Too Short!";
                     }
                 } else {
-                    keyConsole.innerHTML = "Used Too Many QUADRANTS!";
+                    keyConsole.innerHTML = "Too Many</br>QUADRANTS!";
                 }
             } else {
-                keyConsole.innerHTML = "Click A GREEN QUADRANT SLICER To Start!";
+                keyConsole.innerHTML = "Click A</br>GREEN SLICER!";
             }
         });
 
