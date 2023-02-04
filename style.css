@@ -46,7 +46,9 @@ p, li {
 .medText{
 }
 
-
+.slicer {
+  border-radius:33%;
+}
 
 .slicer-hidden {
   display: none;

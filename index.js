@@ -12,7 +12,7 @@ const init = () => {
     const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
     const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
 
-    const tutorial = "<p><span class='gameTitle'>WordSquared</span></br>––––––––</br>– HOW TO PLAY –</br>--- 1 ---</br>Click a GREEN SLICER button on the grid to separate the alphabet into QUADRANTS.</br>--- 2 ---</br> Combine the YELLOW KEY LETTER at the top with letters from only one QUADRANT at at time!</br>–––</br>HOW MANY POINTS</br>CAN YOU SCORE?!</p>"
+    const tutorial = "<p><span class='gameTitle'>WORDSQUARED</span></br>––––––––</br>– HOW TO PLAY –</br>--- 1 ---</br>Click a GREEN SLICER button on the grid to separate the alphabet into QUADRANTS.</br>--- 2 ---</br> Combine the YELLOW KEY LETTER at the top with letters from only one QUADRANT at at time!</br>––––––––</br>HOW MANY POINTS</br>CAN YOU SCORE?!</p>"
 
     const resize = () => {
         // canvas.width = w = window.innerWidth;
@@ -77,7 +77,7 @@ const init = () => {
         keyGuessed.style.fontSize = 'small';
         keyGuessed.classList.add('guessed');
 
-        let keyCredits = addTileButton("WordSquared</br>&#169; Gillespie", 30, sliceSize - 2, 5 * sliceSize + 1, 6 * sliceSize + 1, colorConsole, colorConsole, null, null);
+        let keyCredits = addTileButton("WORDSQUARED</br>&#169; Gillespie", 30, sliceSize - 2, 5 * sliceSize + 1, 6 * sliceSize + 1, colorConsole, colorConsole, null, null);
         keyCredits.style.width = (sliceSize * 2) - 2 + "px";
         keyCredits.style.height = (sliceSize - 2) + "px";
         keyCredits.style.fontSize = 'x-small';
@@ -191,6 +191,7 @@ const init = () => {
                 // Create XY Slicer Button
                 if (col > 0 && col < 5 && row > 1 && row < 6) {
                     var hr = addTileButton("", "Slicer_" + row + "_" + col, sliceSize * .3, xpos - sliceSize*.15, ypos - sliceSize*.15, colorSlicer, colorSlicerHover, null, null);
+                    hr.classList.add('slicer');
                     //// Add Event Handlers
                     // click
                     hr.addEventListener('mouseup', function() {
