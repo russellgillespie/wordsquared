@@ -94,7 +94,7 @@ const init = () => {
         answer.classList.add('answer');
         answer.style.color = colorConsole;
 
-        let keyEnter = addTileButton("RTN", 26, sliceSize - 1, (sliceSize * 4) + 1, (sliceSize * 6) + 1, colorUIMedium, colorHover, null, function() {
+        let keyEnter = addTileButton("ent", 26, sliceSize - 1, (sliceSize * 4) + 1, (sliceSize * 6) + 1, colorUIMedium, colorHover, null, function() {
             // Check if innerHTML is valid word
             answerText = answer.innerHTML;
             var count = countUnique(answerGroups);
@@ -149,11 +149,11 @@ const init = () => {
             answer.innerHTML += abc[0];
         });
 
-        let keyReset = addTileButton("ESC", 29, 2 * sliceSize - 2, 1, 1, colorUIReset, colorHover, answer, init);
+        let keyReset = addTileButton("esc", 29, 2 * sliceSize - 2, 1, 1, colorUIReset, colorHover, answer, init);
         keyReset.style.fontSize = 'x-large';
         keyReset.style.height = sliceSize - 2 + "px";
 
-        let keyDelete = addTileButton("DEL", 28, sliceSize - 2, 1, (sliceSize * 6) + 1, colorUIReset, colorHover, null, null);
+        let keyDelete = addTileButton("del", 28, sliceSize - 2, 1, (sliceSize * 6) + 1, colorUIReset, colorHover, null, null);
         keyDelete.addEventListener("mouseup", function() {
             answer.innerHTML = answer.innerHTML.substring(0, answer.innerHTML.length - 1);
         });
