@@ -10,8 +10,6 @@ const init = () => {
     const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
     const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
 
-
-
     const tutorial = "<p>– HOW TO PLAY –</br>--- 1 ---</br>Click a GREEN SLICER button on the grid to separate the alphabet into QUADRANTS.</br>--- 2 ---</br> Combine the YELLOW KEY LETTER at the top with letters from only one QUADRANT at at time!</br>–––</br>HOW MANY POINTS</br>CAN YOU SCORE?!</p>"
 
     const resize = () => {
