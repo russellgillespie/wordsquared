@@ -69,8 +69,9 @@ const init = () => {
         let keyConsole = addTileButton("", 30, sliceSize - 2, 5 * sliceSize + 1, 1, 'black', 'black', null, null);
         keyConsole.style.width = (sliceSize * 2) - 2 + "px";
         keyConsole.style.height = (sliceSize - 2) + "px";
-        keyConsole.style.fontSize = 'small';
+        keyConsole.style.fontSize = 'x-small';
         keyConsole.style.color = colorConsole;
+        keyConsole.classList.add('console');
 
         let keyGuessed = addTileButton(tutorial, 30, 2 * sliceSize - 2, 5 * sliceSize + 1, sliceSize + 1, colorUILight, colorUILight, null, null);
         keyGuessed.style.height = (sliceSize * 5) - 2 + "px";

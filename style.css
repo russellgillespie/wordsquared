@@ -54,6 +54,10 @@ p, li {
   display: none;
 }
 
+.console {
+  font-weight: 100;
+}
+
 .guessed  {
   text-align : center;
   overflow-y: auto;
