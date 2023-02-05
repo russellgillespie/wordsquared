@@ -201,8 +201,8 @@ const init = () => {
         keyDelete.classList.add('delete');
 
         // Create Score Modes Panel
-        let scoreMode0 = addTileButton("Normal", 31, sliceSize*2 - 2, 1, (sliceSize * 7) + 1, colorUI, colorHover, null, null);
-        scoreMode0.classList.add('scoreMode0');
+        // let scoreMode0 = addTileButton("Normal", 31, sliceSize*2 - 2, 1, (sliceSize * 7) + 1, colorUI, colorHover, null, null);
+        // scoreMode0.classList.add('scoreMode0');
 
         //// GENERATE MAIN GRID ////
 
