@@ -206,7 +206,6 @@ const init = () => {
 
         //// GENERATE MAIN GRID ////
 
-
         // START GRID LOOP
         for (let col = 0; col < slices; col++) {
             for (let row = 1; row < slices + 1; row++) {
