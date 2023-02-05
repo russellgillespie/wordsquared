@@ -97,7 +97,7 @@ const init = () => {
         let keyCredits = addTileButton("WordSquared</br>&#169; Gillespie", 'credits', sliceSize*2 - bezel, sliceSize - bezel, 5 * sliceSize + offset, 6 * sliceSize + offset, colorConsole, colorConsole, null, null);
 
         // Create Score Panel
-        let keyScore = addTileButton("" + score, 'score', sliceSize*2 - bezel, sliceSize - bezel, 3 * sliceSize + offset, offset, colorUIMedium, colorUIMedium, null, null);
+        let keyScore = addTileButton("000" + score, 'score', sliceSize*2 - bezel, sliceSize - bezel, 3 * sliceSize + offset, offset, colorUIMedium, colorUIMedium, null, null);
         keyScore.removeEventListener("mouseup", function() {
             target.innerHTML += button.innerHTML;
         });
@@ -174,7 +174,7 @@ const init = () => {
         });
 
         // Create Reset Panel
-        let keyReset = addTileButton("Reset", 'reset', 2 * sliceSize - bezel, sliceSize - bezel, offset, offset, colorUIReset, colorHover, answer, init);
+        let keyReset = addTileButton("NEW", 'reset', 2 * sliceSize - bezel, sliceSize - bezel, offset, offset, colorUIReset, colorHover, answer, init);
         //keyReset.style.fontSize = 'x-large';
         // keyReset.style.height = sliceSize - bezel + "px";
 
@@ -311,7 +311,14 @@ function addTileButton(label, className, sizex, sizey, x, y, color, hover, targe
 
 function updateScore(current, value, target) {
     current += value;
-    target.innerHTML = current;
+    var t = "";
+    var c = current.toString();
+    var scoreBuffer = 4 - c.length;
+    for (var i=0; i<scoreBuffer; i++){
+      t+="0";
+    }
+    target.innerHTML = t.toString()+c;
+
     return current;
 }
 
@@ -362,7 +369,7 @@ function handleSlicerButton(x, y, buttons){
         }
         else if (b["x"] >= x && b["y"] >= y) {
             //handle;
-            b = slicerHelper(b, "#2245bc", 3);
+            b = slicerHelper(b, "#3366dd", 3);
             b["group"] = 3;
             groups[3].push(b);
             continue;

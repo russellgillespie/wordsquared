@@ -57,19 +57,36 @@ p, li {
   font-size: 2vmin;
 }
 
+.letter, .keyLetter, .reset, .delete, .enter, .score {
+  color: rgba(250,250,250,.8);
+  font-weight: bolder;
+  font-size: 300%;
+  -webkit-text-stroke: 2px rgba(50,50,50,.85);
+}
+
+.score {
+  color: rgba(50,50,50,.85);
+  font-weight: lighter;
+  font-size: 300%;
+}
+
+/* .keyLetter {
+  font-weight: bolder;
+  font-size: 200%;
+} */
 
 
 .console {
   font-weight: lighter;
-  font-size: 50%;
+  font-size: 75%;
 }
 
 
 .answer {
-  margin: 0;
-  padding: 0;
-  font-weight: bold;
-  text-align: center;
+  color: rgba(250,250,250,.8);
+  font-weight: bolder;
+  font-size: 300%;
+  -webkit-text-stroke: 2px rgba(50,50,50,.85);
 }
 
 .medText{
@@ -88,7 +105,7 @@ p, li {
 }
 
 
-
+/*
 .delete {
   font-weight: bolder;
   font-size: 200%;
@@ -97,7 +114,7 @@ p, li {
 .enter {
   font-weight: bolder;
   font-size: 200%;
-}
+} */
 
 .gameMode {
   font-weight: lighter;
