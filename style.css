@@ -68,7 +68,7 @@ p, li {
   color: rgba(250,250,250,.85);
   font-weight: lighter;
   font-size: 150%;
-  -webkit-text-stroke: 1px rgba(250,250,250,.85);
+  -webkit-text-stroke: .25px rgba(250,250,250,.15);
 }
 
 /* .keyLetter {
@@ -87,7 +87,7 @@ p, li {
   color: rgba(250,250,250,.8);
   font-weight: bolder;
   font-size: 150%;
-  -webkit-text-stroke: 2px rgba(50,50,50,.85);
+  -webkit-text-stroke: .25px rgba(50,50,50,.15);
 }
 
 .medText{
