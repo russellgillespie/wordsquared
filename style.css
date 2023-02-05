@@ -1,88 +1,21 @@
 html {
-  background-color: white;
+  background-color: black;
   width : 100%;
-  overflow: hidden;
-  color: black;
-  font-family: PT Mono, monospace, monospace;
-}
-canvas {
-  position: absolute;
-}
-
-h {
-  text-align : center
-  margin-bottom: 0;
-}
-
-h4 {
-  color: white;
-  font-size: 2vmin;
+  /* overflow: hidden; */
+  font-family: PT Mono, monaco, monospace, monospace;
 }
 
 p, li {
   color: black;
-  font-weight: bolder;
-  font-size: 2vmin;
   text-align : center;
 }
 
-.gameButton {
-  color: black;
-  position : absolute;
-  font-weight: bolder;
-}
-
-.gameButton :hover {
-  background-color: "#898989";
-}
-
-.answer {
-  margin: 0;
-  padding: 0;
-  font-weight: lighter;
-  text-align: center;
-}
-
-.medText{
-}
-
-.slicer {
-  border-radius:33%;
-}
-
-.slicer-hidden {
-  display: none;
-}
-
-.console {
-  font-weight: 100;
-}
-
-.guessed  {
-  text-align : center;
-  overflow-y: auto;
-
-}
-
-.gameTitle {
-  font-weight: bolder;
-  font-size: 3.0vmin;
-}
-
-.delete {
-  font-weight: bolder;
-}
-
-.enter {
-
-}
 
 #gameContainer {
   margin: none;
-  background-color : black;
   width : 100vw;
-  height : 100vw;
-  overflow: scroll;
+  height : 100vh;
+  /* overflow: scroll; */
 }
 
 #game {
@@ -90,4 +23,93 @@ p, li {
   position : relative;
   width: inherit;
   height: inherit;
+}
+
+
+.gameButton {
+  color: black;
+  position : absolute;
+  padding: 0;
+  /* font-weight: bolder; */
+  /* font-size: 3vmin; */
+}
+
+.gameButton :hover {
+  background-color: "#898989";
+}
+
+.guessed  {
+  padding: 2px;
+  text-align : center;
+  overflow-y: scroll;
+}
+
+.gameTitle {
+  color: red;
+  font-weight: bolder;
+  font-size: 150%;
+  text-decoration: 1.5px underline black ;
+  -webkit-text-stroke: .5px black;
+}
+
+.guessed p {
+  color: black;
+  font-size: 2vmin;
+}
+
+
+
+.console {
+  font-weight: lighter;
+  font-size: 50%;
+}
+
+
+.answer {
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  text-align: center;
+}
+
+.medText{
+}
+
+.slicer {
+  border-radius: 100% / 100%;
+}
+
+.slicer-hidden {
+  display: none;
+}
+
+.console {
+  /* font-weight: 100; */
+}
+
+
+
+.delete {
+  font-weight: bolder;
+  font-size: 200%;
+}
+
+.enter {
+  font-weight: bolder;
+  font-size: 200%;
+}
+
+.gameMode {
+  font-weight: lighter;
+  font-size: 50%;
+}
+
+.credits {
+  font-weight: lighter;
+  font-size: 50%;
+}
+
+.rg {
+  font-weight: bold;
+  font-size: 50%;
 }
