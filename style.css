@@ -65,9 +65,9 @@ p, li {
 }
 
 .score {
-  color: rgba(50,50,50,.85);
+  color: rgba(250,250,250,.85);
   font-weight: lighter;
-  font-size: 300%;
+  font-size: 150%;
 }
 
 /* .keyLetter {
