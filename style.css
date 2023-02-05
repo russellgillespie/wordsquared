@@ -57,7 +57,7 @@ p, li {
   font-size: 2vmin;
 }
 
-.letter, .keyLetter, .reset, .delete, .enter, .score {
+.letter, .keyLetter, .reset, .delete, .enter, {
   color: rgba(250,250,250,.8);
   font-weight: bolder;
   font-size: 200%;
@@ -68,7 +68,7 @@ p, li {
   color: rgba(250,250,250,.85);
   font-weight: lighter;
   font-size: 150%;
-  -webkit-text-stroke: 2px rgba(250,250,250,.85);
+  -webkit-text-stroke: 1px rgba(250,250,250,.85);
 }
 
 /* .keyLetter {
