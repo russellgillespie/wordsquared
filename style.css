@@ -68,6 +68,7 @@ p, li {
   color: rgba(250,250,250,.85);
   font-weight: lighter;
   font-size: 150%;
+  -webkit-text-stroke: 2px rgba(250,250,250,.85);
 }
 
 /* .keyLetter {
@@ -85,7 +86,7 @@ p, li {
 .answer {
   color: rgba(250,250,250,.8);
   font-weight: bolder;
-  font-size: 300%;
+  font-size: 150%;
   -webkit-text-stroke: 2px rgba(50,50,50,.85);
 }
 
