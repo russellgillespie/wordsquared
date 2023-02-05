@@ -66,6 +66,7 @@ p, li {
 
 .gameTitle {
   font-weight: bolder;
+  font-size: 3.0vmin;
 }
 
 .delete {
