@@ -69,7 +69,8 @@ p, li {
 
 .reset {
   background-color: #cc2020;
-  font-size: 150%;
+  font-size: 75%;
+  font-weight: lighter;
 }
 
 .reset-confirm {
