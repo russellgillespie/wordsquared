@@ -35,7 +35,13 @@ const init = () => {
     const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
     const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
 
-    const tutorial = "<p></br><span class='gameTitle'>WordSquared</span></br></br>* HOW TO PLAY *</br></br>| 1 |</br>Start the game by pressing a GREEN SLICER button on the grid. This separates the alphabet into QUADRANTS. Careful where you slice... you may want to spread out your VOWELS!</br></br>| 2 |</br> Make a 3+ letter WORD by combingng the YELLOW KEY LETTER at the top with LETTERS from only one QUADRANT at at time!</br></br>| 3 |</br>Click [=] to enter your WORD and SCORE POINTS!<br></br>Valid WORDS are worth 1 POINT for each letter over 3... SQUARED! </br></br>*** BONUS ***</br>In addition to your base score, you'll get a BONUS based on the size of the QUADRANT used.</br></br>The BONUS is equal to 25 POINTS minus the amount of LETTERS in the QUADRANT divided by two. Once again, choose your SLICES carefully!</br></br>**************</br>HOW MANY POINTS</br>CAN YOU SCORE?!</br>**************</br></p>"
+    //const tutorial = "<p><span class='gameTitle'>WordSquared</span></br></br>* HOW TO PLAY *</br></br>| 1 |</br>Start the game by pressing a GREEN SLICER button on the grid. This separates the alphabet into QUADRANTS. Careful where you slice... you may want to spread out your VOWELS!</br></br>| 2 |</br> Make a 3+ letter WORD by combingng the YELLOW KEY LETTER at the top with LETTERS from only one QUADRANT at at time!</br></br>| 3 |</br>Click [=] to enter your WORD and SCORE POINTS!<br></br>Valid WORDS are worth 1 POINT for each letter over 3... SQUARED! </br></br>*** BONUS ***</br>In addition to your base score, you'll get a BONUS based on the size of the QUADRANT used.</br></br>The BONUS is equal to 25 POINTS minus the amount of LETTERS in the QUADRANT divided by two. Once again, choose your SLICES carefully!</br></br>**************</br>HOW MANY POINTS</br>CAN YOU SCORE?!</br>**************</br></p>"
+
+    const title = "<span class='gameTitle'>WordSquared</span></br><span class='subtitle'>* HOW TO PLAY *</span>";
+
+    const tutorial = ["<span class='tutorial'></br>| 1 |</br>Start the game by pressing a GREEN SLICER button on the grid. This separates the alphabet into QUADRANTS. Careful where you slice... you may want to spread out your VOWELS!</br></span class='tutorial'>", "<span class='tutorial'></br>| 2 |</br> Make a 3+ letter WORD by combingng the YELLOW KEY LETTER at the top with LETTERS from only one QUADRANT at at time!</br></span class='tutorial'>", "<span class='tutorial'></br>*** BONUS ***</br>In addition to your base score, you'll get a BONUS based on the size of the QUADRANT used.</br>The BONUS is equal to 25 POINTS minus half the amount of LETTERS in the QUADRANT. Once again, choose your SLICES carefully!</br></span class='tutorial'>", "<span class='tutorial'></br></br>**************</br>HOW MANY POINTS</br>CAN YOU SCORE?!</br>**************</br></br></p>" ]
+
+    let tutorialPage = 0;
 
     const resize = () => {
         // window.width = w = window.innerWidth;
@@ -92,27 +98,40 @@ const init = () => {
 
         // CREATE INTERFACE BUTTONS
         // Create Console
-        let keyConsole = addTileButton("Welcome to</br>WordSquared!", 'console', sliceSize * 2 - bezel, sliceSize - bezel, sliceSize*3 + offset, offset, 'black', 'black', null, null);
+        let keyConsole = addTileButton('button', "Welcome to</br>WordSquared!", 'console', sliceSize * 2 - bezel, sliceSize - bezel, sliceSize*3 + offset, offset, 'black', 'black', null, null);
         //keyConsole.style.color = colorConsole;
 
         // Create Tutorial/Guesses Panel
-        let keyGuessed = addTileButton(tutorial, 'guessed', sliceSize * 2 - bezel, sliceSize * 5 - bezel, 5 * sliceSize + offset, sliceSize + offset, colorUILight, colorUILight, null, null);
+        // let keyTitle = addTileButton('button', title, 'guessed', sliceSize * 2 - bezel, sliceSize * 1 - bezel, 5 * sliceSize + offset, sliceSize + offset, colorUILight, colorUILight, null, null);
+
+        let keyGuessed = addTileButton('div', title+tutorial[tutorialPage], 'guessed', sliceSize * 2 - bezel, sliceSize * 5 - bezel, 5 * sliceSize + offset, sliceSize*1 + offset, colorUILight, colorUILight, null, null);
+
+        let keyGuessedPrev = addTileButton('button', "<", 'guessed-prev', sliceSize - bezel*2, sliceSize - bezel*2, sliceSize*5 + offset*3, sliceSize*5 + offset, colorUI, colorHover, null, function(){
+          tutorialPage = tutorialHelper('prev', tutorialPage, keyGuessed, tutorial);
+          keyGuessed.innerHTML = title+tutorial[tutorialPage];
+        });
+
+        let keyGuessedNext = addTileButton('button', ">", 'guessed-next', sliceSize - bezel*2, sliceSize - bezel*2, sliceSize*6 + offset*1, sliceSize*5 + offset, colorUI, colorHover, null, function(){
+          tutorialPage = tutorialHelper('next', tutorialPage, keyGuessed, tutorial);
+          keyGuessed.innerHTML = title+tutorial[tutorialPage];
+        });
+
 
         // Create Credits Panel
-        let keyCredits = addTileButton("WordSquared</br>&#169; Gillespie", 'credits', sliceSize*2 - bezel, sliceSize - bezel, 5 * sliceSize + offset, 6 * sliceSize + offset, colorConsole, colorConsole, null, null);
+        let keyCredits = addTileButton('button', "WordSquared</br>&#169; Gillespie", 'credits', sliceSize*2 - bezel, sliceSize - bezel, 5 * sliceSize + offset, 6 * sliceSize + offset, colorConsole, colorConsole, null, null);
 
         // Create Score Panel
-        let keyScore = addTileButton("000" + score, 'score', sliceSize*2 - bezel, sliceSize - bezel, sliceSize*0 + offset, offset, colorUIMedium, colorUIMedium, null, null);
+        let keyScore = addTileButton('button', "000" + score, 'score', sliceSize*2 - bezel, sliceSize - bezel, sliceSize*0 + offset, offset, colorUIMedium, colorUIMedium, null, null);
         keyScore.removeEventListener("mouseup", function() {
             target.innerHTML += button.innerHTML;
         });
 
         // Create Answer Panel
-        let answer = addTileButton("", 'answer', sliceSize * 3 - bezel, sliceSize - bezel, sliceSize + offset, (sliceSize * 6) + offset, 'black', 'black', null, {});
+        let answer = addTileButton('button', "", 'answer', sliceSize * 3 - bezel, sliceSize - bezel, sliceSize + offset, (sliceSize * 6) + offset, 'black', 'black', null, {});
         //answer.style.color = colorConsole;
 
         // Create Enter Panel
-        let keyEnter = addTileButton("=", 'enter', sliceSize - bezel, sliceSize - bezel, sliceSize * 4 + offset, (sliceSize * 6) + offset, colorUIMedium, colorHover, null, function() {
+        let keyEnter = addTileButton('button', "=", 'enter', sliceSize - bezel, sliceSize - bezel, sliceSize * 4 + offset, (sliceSize * 6) + offset, colorUIMedium, colorHover, null, function() {
             // Check if innerHTML is valid word
             answerText = answer.innerHTML;
             var count = countUnique(answerGroups);
@@ -174,12 +193,12 @@ const init = () => {
         });
 
         // Create KeyLetter Panel
-        let keyLetter = addTileButton(abc[0], 'keyLetter', sliceSize - bezel, sliceSize - bezel, (2 * sliceSize) + offset, offset, colorUILight, colorHover, answer, function() {
+        let keyLetter = addTileButton('button', abc[0], 'keyLetter', sliceSize - bezel, sliceSize - bezel, (2 * sliceSize) + offset, offset, colorUILight, colorHover, answer, function() {
             answer.innerHTML += abc[0];
         });
 
         // Create Reset Confirm
-        let keyResetConfirm = addTileButton(">", 'reset-confirm', sliceSize - bezel, sliceSize - bezel, sliceSize*6 + offset, offset, null, null, answer, function(){
+        let keyResetConfirm = addTileButton('button', ">", 'reset-confirm', sliceSize - bezel, sliceSize - bezel, sliceSize*6 + offset, offset, null, null, answer, function(){
           keyResetConfirm.classList.remove('reset-confirm-show');
           keyResetDeny.classList.remove('reset-confirm-show');
           keyReset.classList.remove('reset-confirm-hide');
@@ -188,7 +207,7 @@ const init = () => {
         });
 
         // Create Reset Deny
-        let keyResetDeny = addTileButton("X", 'reset-deny', sliceSize - bezel, sliceSize - bezel, sliceSize*5 + offset, offset, null, colorHover, answer, function(){
+        let keyResetDeny = addTileButton('button', "X", 'reset-deny', sliceSize - bezel, sliceSize - bezel, sliceSize*5 + offset, offset, null, colorHover, answer, function(){
           keyResetConfirm.classList.remove('reset-confirm-show');
           keyResetDeny.classList.remove('reset-confirm-show');
           keyReset.classList.remove('reset-confirm-hide');
@@ -208,7 +227,7 @@ const init = () => {
         });
 
         // Create Reset Panel
-        let keyReset = addTileButton("New Game", 'reset', 2 * sliceSize - bezel, sliceSize - bezel, sliceSize*5 + offset, offset, colorUIReset, colorHover, answer, function(){
+        let keyReset = addTileButton('button', "New Game", 'reset', 2 * sliceSize - bezel, sliceSize - bezel, sliceSize*5 + offset, offset, colorUIReset, colorHover, answer, function(){
           keyResetConfirm.classList.add('reset-confirm-show');
           keyResetDeny.classList.add('reset-confirm-show');
           keyReset.classList.add('reset-confirm-hide');
@@ -216,7 +235,7 @@ const init = () => {
 
 
         // Create Delete Panel
-        let keyDelete = addTileButton("<", 'delete', sliceSize - bezel, sliceSize - bezel, offset, (sliceSize * 6) + offset, colorUIReset, colorHover, null, null);
+        let keyDelete = addTileButton('button', "<", 'delete', sliceSize - bezel, sliceSize - bezel, offset, (sliceSize * 6) + offset, colorUIReset, colorHover, null, null);
         keyDelete.addEventListener("mouseup", function() {
             answer.innerHTML = answer.innerHTML.substring(0, answer.innerHTML.length - 1);
             //console.log(answerGroups);
@@ -240,7 +259,7 @@ const init = () => {
 
                 // Create XY Grid Button
                 if (col >= 0 && col < 5 && row > 0 && row < 6) {
-                    var b = addTileButton(buttonText, "letter", sliceSize - bezel, sliceSize - bezel, xpos + offset, ypos + offset, colorLight, colorHover, null, function() {
+                    var b = addTileButton('button', buttonText, "letter", sliceSize - bezel, sliceSize - bezel, xpos + offset, ypos + offset, colorLight, colorHover, null, function() {
                       if (gameStarted) {
                         answer.innerHTML += buttonText;
                       } else {
@@ -279,7 +298,7 @@ const init = () => {
                     default:
                         console.log("Error Parsing Slicer Modes!");
                   }
-                    var hr = addTileButton("", 'slicer', sliceSize*.5 - bezel, sliceSize*.5 - bezel, xpos + sliceSize*.5/-2+offset, ypos + sliceSize*.5/-2+offset, colorSlicer, null, null, null);
+                    var hr = addTileButton('button', "", 'slicer', sliceSize*.5 - bezel, sliceSize*.5 - bezel, xpos + sliceSize*.5/-2+offset, ypos + sliceSize*.5/-2+offset, colorSlicer, null, null, null);
                     //// Add Event Handlers
                     // click
                     hr.addEventListener('mouseup', function() {
@@ -297,7 +316,7 @@ const init = () => {
                 if (col%2==0) {
                   var key = ((row*6-41)+(col/2));
                   var colPos = col/2+1;
-                  var hr = addTileButton(slicerModes[colPos], slicerModes[colPos], sliceSize*2 - bezel, sliceSize - bezel, xpos + offset, ypos + offset, null, null, null, null);
+                  var hr = addTileButton('button', slicerModes[colPos], slicerModes[colPos], sliceSize*2 - bezel, sliceSize - bezel, xpos + offset, ypos + offset, null, null, null, null);
                   hr.classList.add('gameMode');
                   //// Add Event Handlers
                   // click
@@ -327,7 +346,7 @@ const init = () => {
             } // ROW LOOP END
         } // COL LOOP END
     }; // END GRID LOOP
-    let DNP = addTileButton("DO NOT</br>PRESS", 'dnp', sliceSize - bezel, sliceSize - bezel, sliceSize*6 + offset, sliceSize*7 + offset, 'red', 'red', null, function(){
+    let DNP = addTileButton('button', "DO NOT</br>PRESS", 'dnp', sliceSize - bezel, sliceSize - bezel, sliceSize*6 + offset, sliceSize*7 + offset, 'red', 'red', null, function(){
       slicerMode = slicerModes[0];
       // for (var f=0; f < featureButtons.length; f++) {
       //   featureButtons[f].classList.remove('activeGameMode')
@@ -385,10 +404,10 @@ function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
 
-function addTileButton(label, className, sizex, sizey, x, y, color, hover, target, listener) {
+function addTileButton(type, label, className, sizex, sizey, x, y, color, hover, target, listener) {
     // 1. Create the button
     var game = document.getElementById("game");
-    var button = document.createElement("button");
+    var button = document.createElement(type);
     button.name = className+"_"+label;
     button.innerHTML = label;
     button.style.height = sizey + "px";
@@ -512,4 +531,31 @@ function slicerHelper(obj, color, group) {
 
 function countUnique(iterable) {
   return new Set(iterable).size;
+}
+
+function tutorialHelper (direction, page, element, text) {
+  var p = page;
+
+    console.log(p);
+  switch (direction) {
+    case 'prev':
+      if (p > 0){
+        p -= 1;
+      } else {
+        p = text.length - 1;
+      }
+      break;
+    case 'next':
+    if (p < text.length-1){
+      p += 1;
+    } else {
+      p = 0;
+    }
+      break;
+    default:
+      "Error in tutorial Pagination Logic";
+      break;
+    }
+
+    return p;
 }

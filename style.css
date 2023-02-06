@@ -3,6 +3,7 @@ html {
   width : 100%;
   overflow: hidden;
   font-family: PT Mono, monaco, monospace, monospace;
+  touch-action: manipulation;
 }
 
 p, li {
@@ -38,8 +39,8 @@ p, li {
 .gameTitle {
   color: red;
   font-weight: bolder;
-  font-size: 150%;
-  text-decoration: 1.5px underline black ;
+  font-size: 75%;
+  text-decoration: underline;
   -webkit-text-stroke: .5px black;
 }
 
@@ -133,17 +134,28 @@ p, li {
 }
 
 .guessed {
+  /* baseline: top; */
   background-color: #deca45;
-  padding: 2px;
+  padding: 4px;
+  padding-top: 8px;
   text-align : center;
   overflow-y: scroll;
-  display: inherit !important;
+  line-height: 80%;
+}
+
+.guessed > div {
+  padding: 0;
+  margin: 0;
 }
 
 
-.guessed p {
+.tutorial, .subtitle {
   color: black;
-  font-size: 2vmin;
+  font-size: 1.6vmin;
+}
+
+.guessed-prev, .guessed-next {
+    background-color: rgba(220, 185, 0, 0.9);
 }
 
 .delete {
