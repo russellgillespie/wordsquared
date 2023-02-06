@@ -193,10 +193,10 @@ const init = () => {
           keyResetDeny.classList.remove('reset-confirm-show');
           keyReset.classList.remove('reset-confirm-hide');
 
-          console.log(featureButtons);
+          //console.log(featureButtons);
           for (var i = 0; i < featureButtons.length; i++) {
             var b = featureButtons[i];
-            console.log(b);
+            //console.log(b);
             if (b.name.includes(slicerMode)){
               b.classList.remove('passiveGameMode');
               b.classList.add('activeGameMode');
@@ -219,9 +219,9 @@ const init = () => {
         let keyDelete = addTileButton("<", 'delete', sliceSize - bezel, sliceSize - bezel, offset, (sliceSize * 6) + offset, colorUIReset, colorHover, null, null);
         keyDelete.addEventListener("mouseup", function() {
             answer.innerHTML = answer.innerHTML.substring(0, answer.innerHTML.length - 1);
-            console.log(answerGroups);
+            //console.log(answerGroups);
             answerGroups.pop();
-            console.log(answerGroups);
+            //console.log(answerGroups);
         });
 
         //// GENERATE MAIN GRID ////
@@ -346,10 +346,10 @@ const init = () => {
       keyReset.classList.add('reset-confirm-hide');
     });
 
-    console.log(featureButtons);
+    //console.log(featureButtons);
     for (var i = 0; i < featureButtons.length; i++) {
       var b = featureButtons[i];
-      console.log(b);
+      //console.log(b);
       if (b.name.includes(slicerMode)){
         b.classList.add('activeGameMode');
       }
