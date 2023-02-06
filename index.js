@@ -179,7 +179,7 @@ const init = () => {
         });
 
         // Create Reset Confirm
-        let keyResetConfirm = addTileButton("YES", 'reset-confirm', sliceSize - bezel, sliceSize - bezel, sliceSize*6 + offset, offset, null, null, answer, function(){
+        let keyResetConfirm = addTileButton(">", 'reset-confirm', sliceSize - bezel, sliceSize - bezel, sliceSize*6 + offset, offset, null, null, answer, function(){
           keyResetConfirm.classList.remove('reset-confirm-show');
           keyResetDeny.classList.remove('reset-confirm-show');
           keyReset.classList.remove('reset-confirm-hide');
@@ -188,7 +188,7 @@ const init = () => {
         });
 
         // Create Reset Deny
-        let keyResetDeny = addTileButton("NO!", 'reset-deny', sliceSize - bezel, sliceSize - bezel, sliceSize*5 + offset, offset, null, colorHover, answer, function(){
+        let keyResetDeny = addTileButton("X", 'reset-deny', sliceSize - bezel, sliceSize - bezel, sliceSize*5 + offset, offset, null, colorHover, answer, function(){
           keyResetConfirm.classList.remove('reset-confirm-show');
           keyResetDeny.classList.remove('reset-confirm-show');
           keyReset.classList.remove('reset-confirm-hide');
