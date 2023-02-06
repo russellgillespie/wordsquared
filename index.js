@@ -92,8 +92,8 @@ const init = () => {
 
         // CREATE INTERFACE BUTTONS
         // Create Console
-        let keyConsole = addTileButton("", 'console', sliceSize * 2 - bezel, sliceSize - bezel, sliceSize*3 + offset, offset, 'black', 'black', null, null);
-        keyConsole.style.color = colorConsole;
+        let keyConsole = addTileButton("Welcome to</br>WordSquared!", 'console', sliceSize * 2 - bezel, sliceSize - bezel, sliceSize*3 + offset, offset, 'black', 'black', null, null);
+        //keyConsole.style.color = colorConsole;
 
         // Create Tutorial/Guesses Panel
         let keyGuessed = addTileButton(tutorial, 'guessed', sliceSize * 2 - bezel, sliceSize * 5 - bezel, 5 * sliceSize + offset, sliceSize + offset, colorUILight, colorUILight, null, null);
@@ -109,7 +109,7 @@ const init = () => {
 
         // Create Answer Panel
         let answer = addTileButton("", 'answer', sliceSize * 3 - bezel, sliceSize - bezel, sliceSize + offset, (sliceSize * 6) + offset, 'black', 'black', null, {});
-        answer.style.color = colorConsole;
+        //answer.style.color = colorConsole;
 
         // Create Enter Panel
         let keyEnter = addTileButton("=", 'enter', sliceSize - bezel, sliceSize - bezel, sliceSize * 4 + offset, (sliceSize * 6) + offset, colorUIMedium, colorHover, null, function() {
@@ -208,7 +208,7 @@ const init = () => {
         });
 
         // Create Reset Panel
-        let keyReset = addTileButton("NEW", 'reset', 2 * sliceSize - bezel, sliceSize - bezel, sliceSize*5 + offset, offset, colorUIReset, colorHover, answer, function(){
+        let keyReset = addTileButton("New Game", 'reset', 2 * sliceSize - bezel, sliceSize - bezel, sliceSize*5 + offset, offset, colorUIReset, colorHover, answer, function(){
           keyResetConfirm.classList.add('reset-confirm-show');
           keyResetDeny.classList.add('reset-confirm-show');
           keyReset.classList.add('reset-confirm-hide');
@@ -219,6 +219,9 @@ const init = () => {
         let keyDelete = addTileButton("<", 'delete', sliceSize - bezel, sliceSize - bezel, offset, (sliceSize * 6) + offset, colorUIReset, colorHover, null, null);
         keyDelete.addEventListener("mouseup", function() {
             answer.innerHTML = answer.innerHTML.substring(0, answer.innerHTML.length - 1);
+            console.log(answerGroups);
+            answerGroups.pop();
+            console.log(answerGroups);
         });
 
         //// GENERATE MAIN GRID ////
@@ -276,7 +279,7 @@ const init = () => {
                     default:
                         console.log("Error Parsing Slicer Modes!");
                   }
-                    var hr = addTileButton("", 'slicer', sliceSize*.5 - bezel, sliceSize*.5 - bezel, xpos + sliceSize*.5/-2+offset, ypos + sliceSize*.5/-2+offset, colorSlicer, colorSlicerHover, null, null);
+                    var hr = addTileButton("", 'slicer', sliceSize*.5 - bezel, sliceSize*.5 - bezel, xpos + sliceSize*.5/-2+offset, ypos + sliceSize*.5/-2+offset, colorSlicer, null, null, null);
                     //// Add Event Handlers
                     // click
                     hr.addEventListener('mouseup', function() {
@@ -324,7 +327,7 @@ const init = () => {
             } // ROW LOOP END
         } // COL LOOP END
     }; // END GRID LOOP
-    let DNP = addTileButton("DO NOT</br>PRESS", 'rg', sliceSize - bezel, sliceSize - bezel, sliceSize*6 + offset, sliceSize*7 + offset, 'red', 'red', null, function(){
+    let DNP = addTileButton("DO NOT</br>PRESS", 'dnp', sliceSize - bezel, sliceSize - bezel, sliceSize*6 + offset, sliceSize*7 + offset, 'red', 'red', null, function(){
       slicerMode = slicerModes[0];
       // for (var f=0; f < featureButtons.length; f++) {
       //   featureButtons[f].classList.remove('activeGameMode')
@@ -392,7 +395,7 @@ function addTileButton(label, className, sizex, sizey, x, y, color, hover, targe
     button.style.width = sizex + "px";
     button.style.left = x + "px";
     button.style.top = y + "px";
-    button.style.backgroundColor = color;
+    //button.style.backgroundColor = color;
     //button.style.fontSize = 'x-large';
     button.classList.add(className);
     button.classList.add('gameButton');
@@ -489,7 +492,8 @@ function handleSlicerButton(x, y, buttons){
 }
 
 function slicerHelper(obj, color, group) {
-    obj["button"].style.backgroundColor = color;
+    obj["button"].classList.add('quadrant-'+group);
+    //obj["button"].style.backgroundColor = color;
     // highlight the mouseover target
     // obj["button"].removeEventListener("mouseout", (event) => {
     //     event.target.style.backgroundColor = color;

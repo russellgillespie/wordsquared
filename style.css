@@ -34,15 +34,6 @@ p, li {
   font-size: 3vmin; */
 }
 
-.gameButton :hover {
-  background-color: #898989;
-}
-
-.guessed  {
-  padding: 2px;
-  text-align : center;
-  overflow-y: scroll;
-}
 
 .gameTitle {
   color: red;
@@ -52,16 +43,13 @@ p, li {
   -webkit-text-stroke: .5px black;
 }
 
-.guessed p {
-  color: black;
-  font-size: 2vmin;
-}
+
 
 .letter, .keyLetter, .reset, .delete, .enter, .reset-confirm, .reset-deny {
   color: rgba(250,250,250,.8);
   font-weight: bolder;
   font-size: 200%;
-  -webkit-text-stroke: .5px rgba(50,50,50,.65);
+  -webkit-text-stroke: 1px rgba(50,50,50,.65);
 }
 
 .score {
@@ -71,62 +59,15 @@ p, li {
   -webkit-text-stroke: .25px rgba(250,250,250,.15);
 }
 
-/* .keyLetter {
-  font-weight: bolder;
-  font-size: 200%;
-} */
-
-
 .console {
+  background-color: black;
+  color: rgba(200, 225, 255, 0.95);
   font-weight: lighter;
   font-size: 75%;
 }
 
-
-.answer {
-  color: rgba(250,250,250,.8);
-  font-weight: bolder;
-  font-size: 150%;
-  -webkit-text-stroke: .25px rgba(50,50,50,.15);
-}
-
-.medText{
-}
-
-.slicer {
-  border-radius: 100% / 100%;
-}
-
-.slicer-hidden {
-  display: none;
-}
-
-.console {
-  /* font-weight: 100; */
-}
-
-
-/*
-.delete {
-  font-weight: bolder;
-  font-size: 200%;
-}
-
-.enter {
-  font-weight: bolder;
-  font-size: 200%;
-} */
-
-.gameMode {
-  background-color: #dedede;
-}
-
-.passiveGameMode {
-  background-color: #dedede;
-}
-
-.activeGameMode {
-  background-color: #cc0000;
+.reset {
+  font-size: 100%;
 }
 
 .reset-confirm {
@@ -145,13 +86,139 @@ p, li {
   display: none;
 }
 
+.keyLetter {
+  background-color: #deca45;
+}
+
+.keyLetter:hover {
+  background-color: rgba(220, 185, 0, 0.9);
+}
+
+.letter {
+  background-color: black;
+}
+
+.letter:hover, .reset-deny:hover{
+  background-color: rgba(200, 225, 255, 0.9);
+}
+
+.slicer {
+  background-color: rgba(69, 187, 25, .4);
+  border-radius: 100% / 100%;
+}
+
+.slicer:hover {
+  background-color: rgba(69, 187, 25, .9);
+  border-radius: 33% / 33%;
+}
+
+.slicer-hidden {
+  display: none;
+}
+
+.quadrant-0 {
+  background-color: #55ce55;
+}
+.quadrant-1 {
+  background-color: #9978fa;
+}
+.quadrant-2 {
+  background-color: #dd9934;
+}
+.quadrant-3 {
+  background-color: #3366dd;
+}
+
+.guessed {
+  background-color: #deca45;
+  padding: 2px;
+  text-align : center;
+  overflow-y: scroll;
+}
+
+
+.guessed p {
+  color: black;
+  font-size: 2vmin;
+}
+
+.delete {
+  background-color: #cc2020;
+  /* font-weight: bolder;
+  font-size: 200%; */
+}
+
+.delete:hover, .reset-confirm:hover {
+  background-color: #ff4141;
+}
+
+.answer {
+  background-color: black;
+  color: rgba(200, 225, 255, 0.95);
+  font-weight: bolder;
+  font-size: 150%;
+  -webkit-text-stroke: .25px rgba(50,50,50,.15);
+}
+
+.enter {
+  /* font-weight: bolder;
+  font-size: 200%; */
+}
+
+.enter:hover {
+  background-color: rgba(69, 187, 25, .9);
+}
 
 .credits {
+  background-color: rgba(200, 225, 255, 0.95);
   font-weight: lighter;
   font-size: 50%;
 }
 
-.rg {
+.gameMode {
+  background-color: #dedede;
+}
+
+.gameMode:hover {
+  background-color: #ffabab;
+}
+
+.passiveGameMode {
+  background-color: #dedede;
+}
+
+.activeGameMode {
+  background-color: #cc0000;
+}
+
+.activeGameMode:hover {
+  background-color: #ff2222;
+}
+
+.dnp {
+  background-color: #cc2020;
   font-weight: bold;
   font-size: 50%;
 }
+
+.keyLetter {
+  color: black !important;
+  font-size: 400%;
+  font-weight: bolder;
+  -webkit-text-stroke: 1px rgba(250,250,250,.75);
+}
+
+/* let colorPrimary = "#5838ae";
+let colorSecondary = "#ceae23";
+let colorDark = "#121212";
+let colorLight = "#dedede";
+let colorMedium = "#ababab";
+let colorUIReset = "#cc2020";
+let colorUILight = "#deca45";
+let colorUI = "#3499ce";
+let colorUIMedium = "#34aabc";
+let colorUIDark = "#015589";
+let colorConsole = "rgba(200, 225, 255, 0.95)";
+let colorHover = "rgba(200, 225, 255, 0.9)";
+let colorSlicer = "rgba(69, 187, 25, .8)";
+let colorSlicerHover = "rgba(69, 187, 25, .9)"; */
