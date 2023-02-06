@@ -3,14 +3,17 @@ const wordDict = ["aa", "aah", "aahed", "aahing", "aahs", "aal", "aalii", "aalii
 
 
 
-
+//const wordDict = [];
 
 
 ///////////////////////////
 ///////////////////////////
 ///////////////////////////
 
-let gameModes = ['Normal', 'Vowels', 'Random', 'Hard', ]
+let gameModes = ['Normal', 'Vowels', 'Random', 'Hard' ];
+let slicerModes = ['All', 'Center', 'Corners', 'Octagon'];
+let slicerMode = 'All';
+let pendingSlicerMode = 'All';
 let answerText = "";
 let answerGroups = [];
 let buttonGroups = [
@@ -24,6 +27,7 @@ let offset = 2;
 let bezel = 4;
 
 const init = () => {
+
     let gameStarted = false;
     const html = document.getElementsByTagName('html').item(0),
       game = document.getElementById('game');
@@ -63,6 +67,7 @@ const init = () => {
         // DEFINE GRID VARIABLES
         let buttonList = [];
         let slicerList = [];
+        let featureButtons = [];
 
         // INITIALIZE COLORS
         let colorPrimary = "#5838ae";
@@ -75,7 +80,7 @@ const init = () => {
         let colorUI = "#3499ce";
         let colorUIMedium = "#34aabc";
         let colorUIDark = "#015589";
-        let colorConsole = "rgba(200, 225, 255, 0.95)"
+        let colorConsole = "rgba(200, 225, 255, 0.95)";
         let colorHover = "rgba(200, 225, 255, 0.9)";
         let colorSlicer = "rgba(69, 187, 25, .8)";
         let colorSlicerHover = "rgba(69, 187, 25, .9)";
@@ -87,7 +92,7 @@ const init = () => {
 
         // CREATE INTERFACE BUTTONS
         // Create Console
-        let keyConsole = addTileButton("", 'console', sliceSize * 2 - bezel, sliceSize - bezel, 5 * sliceSize + offset, offset, 'black', 'black', null, null);
+        let keyConsole = addTileButton("", 'console', sliceSize * 2 - bezel, sliceSize - bezel, sliceSize*3 + offset, offset, 'black', 'black', null, null);
         keyConsole.style.color = colorConsole;
 
         // Create Tutorial/Guesses Panel
@@ -97,7 +102,7 @@ const init = () => {
         let keyCredits = addTileButton("WordSquared</br>&#169; Gillespie", 'credits', sliceSize*2 - bezel, sliceSize - bezel, 5 * sliceSize + offset, 6 * sliceSize + offset, colorConsole, colorConsole, null, null);
 
         // Create Score Panel
-        let keyScore = addTileButton("000" + score, 'score', sliceSize*2 - bezel, sliceSize - bezel, 3 * sliceSize + offset, offset, colorUIMedium, colorUIMedium, null, null);
+        let keyScore = addTileButton("000" + score, 'score', sliceSize*2 - bezel, sliceSize - bezel, sliceSize*0 + offset, offset, colorUIMedium, colorUIMedium, null, null);
         keyScore.removeEventListener("mouseup", function() {
             target.innerHTML += button.innerHTML;
         });
@@ -173,10 +178,42 @@ const init = () => {
             answer.innerHTML += abc[0];
         });
 
+        // Create Reset Confirm
+        let keyResetConfirm = addTileButton("YES", 'reset-confirm', sliceSize - bezel, sliceSize - bezel, sliceSize*6 + offset, offset, null, null, answer, function(){
+          keyResetConfirm.classList.remove('reset-confirm-show');
+          keyResetDeny.classList.remove('reset-confirm-show');
+          keyReset.classList.remove('reset-confirm-hide');
+          slicerMode = pendingSlicerMode;
+          init();
+        });
+
+        // Create Reset Deny
+        let keyResetDeny = addTileButton("NO!", 'reset-deny', sliceSize - bezel, sliceSize - bezel, sliceSize*5 + offset, offset, null, colorHover, answer, function(){
+          keyResetConfirm.classList.remove('reset-confirm-show');
+          keyResetDeny.classList.remove('reset-confirm-show');
+          keyReset.classList.remove('reset-confirm-hide');
+
+          console.log(featureButtons);
+          for (var i = 0; i < featureButtons.length; i++) {
+            var b = featureButtons[i];
+            console.log(b);
+            if (b.name.includes(slicerMode)){
+              b.classList.remove('passiveGameMode');
+              b.classList.add('activeGameMode');
+            } else {
+              b.classList.remove('activeGameMode');
+              b.classList.add('passiveGameMode');
+            }
+          }
+        });
+
         // Create Reset Panel
-        let keyReset = addTileButton("NEW", 'reset', 2 * sliceSize - bezel, sliceSize - bezel, offset, offset, colorUIReset, colorHover, answer, init);
-        //keyReset.style.fontSize = 'x-large';
-        // keyReset.style.height = sliceSize - bezel + "px";
+        let keyReset = addTileButton("NEW", 'reset', 2 * sliceSize - bezel, sliceSize - bezel, sliceSize*5 + offset, offset, colorUIReset, colorHover, answer, function(){
+          keyResetConfirm.classList.add('reset-confirm-show');
+          keyResetDeny.classList.add('reset-confirm-show');
+          keyReset.classList.add('reset-confirm-hide');
+        });
+
 
         // Create Delete Panel
         let keyDelete = addTileButton("<", 'delete', sliceSize - bezel, sliceSize - bezel, offset, (sliceSize * 6) + offset, colorUIReset, colorHover, null, null);
@@ -203,6 +240,8 @@ const init = () => {
                     var b = addTileButton(buttonText, "letter", sliceSize - bezel, sliceSize - bezel, xpos + offset, ypos + offset, colorLight, colorHover, null, function() {
                       if (gameStarted) {
                         answer.innerHTML += buttonText;
+                      } else {
+                        keyConsole.innerHTML = "Click a</br>GREEN SLICER!";
                       }
                     });
                     buttonList.push({"x": col, "y": row, "button": b, "group" : null});
@@ -210,6 +249,33 @@ const init = () => {
 
                 // Create XY Slicer Button
                 if (col > 0 && col < 5 && row > 1 && row < 6) {
+
+                  // Query Slicer Mode
+                  switch (slicerMode) {
+                    case 'All':
+                        break;
+                    case 'Center':
+                        if ((col ==2 || col == 3) && (row ==3 || row == 4)) {
+                          break;
+                        } else {
+                          continue;
+                        }
+                        break;
+                    case 'Corners':
+                        if ((col ==1 || col ==4) && (row ==2 || row == 5)) {
+                          break;
+                        } else {
+                          continue;
+                    }
+                    case 'Octagon':
+                        if (((col ==2 || col == 3) && (row ==2 || row == 5)) || ((col == 1 || col == 4) && (row ==3 || row == 4))) {
+                          break;
+                        } else {
+                          continue;
+                    }
+                    default:
+                        console.log("Error Parsing Slicer Modes!");
+                  }
                     var hr = addTileButton("", 'slicer', sliceSize*.5 - bezel, sliceSize*.5 - bezel, xpos + sliceSize*.5/-2+offset, ypos + sliceSize*.5/-2+offset, colorSlicer, colorSlicerHover, null, null);
                     //// Add Event Handlers
                     // click
@@ -227,46 +293,87 @@ const init = () => {
               if (col >= 0 && col < 6 && row > 6 && row < 8) {
                 if (col%2==0) {
                   var key = ((row*6-41)+(col/2));
-                  var hr = addTileButton("Future</br>Feature "+ key, 'gameMode', sliceSize*2 - bezel, sliceSize - bezel, xpos + offset, ypos + offset, colorLight, colorHover, null, null);
-                  hr.classList.add('passiveGameMode');
+                  var colPos = col/2+1;
+                  var hr = addTileButton(slicerModes[colPos], slicerModes[colPos], sliceSize*2 - bezel, sliceSize - bezel, xpos + offset, ypos + offset, null, null, null, null);
+                  hr.classList.add('gameMode');
                   //// Add Event Handlers
                   // click
                   hr.addEventListener('mouseup', function() {
-                      console.log('toggled gameMode: ' + key);
-                      hr.classList.add('activeGameMode');
+                      for (var f=0; f < featureButtons.length; f++) {
+                        featureButtons[f].classList.remove('activeGameMode')
+                        featureButtons[f].classList.add('passiveGameMode');
+                        //f.style.backgroundColor = '#cccccc';
+                      };
+                      var fb = featureButtons[col/2];
+                      //fb.style.backgroundColor = '#cc0000';
+                      fb.classList.remove('passiveGameMode');
+                      fb.classList.add('activeGameMode');
+
+                      pendingSlicerMode = slicerModes[col/2+1];
+
+                      keyResetConfirm.classList.add('reset-confirm-show');
+                      keyResetDeny.classList.add('reset-confirm-show');
+                      keyReset.classList.add('reset-confirm-hide');
                   });
-                }
+                  featureButtons.push(hr);
+
+
 
                 } // GAME MODE LOOP END
-                var hr = addTileButton("DO NOT</br>PRESS", 'rg', sliceSize - bezel, sliceSize - bezel, sliceSize*6 + offset, sliceSize*7 + offset, 'red', 'red', null, null);
+
             } // ROW LOOP END
         } // COL LOOP END
     }; // END GRID LOOP
+    let DNP = addTileButton("DO NOT</br>PRESS", 'rg', sliceSize - bezel, sliceSize - bezel, sliceSize*6 + offset, sliceSize*7 + offset, 'red', 'red', null, function(){
+      slicerMode = slicerModes[0];
+      // for (var f=0; f < featureButtons.length; f++) {
+      //   featureButtons[f].classList.remove('activeGameMode')
+      //   featureButtons[f].classList.add('passiveGameMode');
+      //   //f.style.backgroundColor = '#cccccc';
+      // };
+      // var fb = featureButtons[col/2];
+      // //fb.style.backgroundColor = '#cc0000';
+      // fb.classList.remove('passiveGameMode');
+      // fb.classList.add('activeGameMode');
+      //
+      pendingSlicerMode = 'All';
+
+      keyResetConfirm.classList.add('reset-confirm-show');
+      keyResetDeny.classList.add('reset-confirm-show');
+      keyReset.classList.add('reset-confirm-hide');
+    });
+
+    console.log(featureButtons);
+    for (var i = 0; i < featureButtons.length; i++) {
+      var b = featureButtons[i];
+      console.log(b);
+      if (b.name.includes(slicerMode)){
+        b.classList.add('activeGameMode');
+      }
+    }
+
+}
 
 
 
-    // Make Game Mode Buttons
+    // const loop = (t) => {
+    //
+    //     i++;
+    //     last = t;
+    //     window.requestAnimationFrame(loop);
+    // };
 
-
-
-    const loop = (t) => {
-
-        i++;
-        last = t;
-        window.requestAnimationFrame(loop);
-    };
-
-    let w, h, last,
-        i = 0,
-        start = 0;
+    // let w, h, last,
+    //     i = 0,
+    //     start = 0;
 
     window.removeEventListener('load', init);
     window.addEventListener('resize', resize);
-    resize();
+    //resize();
     drawMap();
     html.classList.remove('no-js');
     html.classList.add('js');
-    window.requestAnimationFrame(loop);
+    // window.requestAnimationFrame(loop);
 };
 
 window.addEventListener('load', init);
@@ -296,14 +403,14 @@ function addTileButton(label, className, sizex, sizey, x, y, color, hover, targe
     // 3. Add event handler
     button.addEventListener("mouseup", listener);
 
-    // highlight the mouseover target
-    button.addEventListener("mouseenter", (event) => {
-        event.target.style.backgroundColor = hover;
-    }, false);
-
-    button.addEventListener("mouseout", (event) => {
-        event.target.style.backgroundColor = color;
-    }, false);
+    // // highlight the mouseover target
+    // button.addEventListener("mouseenter", (event) => {
+    //     event.target.style.backgroundColor = hover;
+    // }, false);
+    //
+    // button.addEventListener("mouseout", (event) => {
+    //     event.target.style.backgroundColor = color;
+    // }, false);
 
     // 4. Return handle to button
     return button;
@@ -384,13 +491,13 @@ function handleSlicerButton(x, y, buttons){
 function slicerHelper(obj, color, group) {
     obj["button"].style.backgroundColor = color;
     // highlight the mouseover target
-    obj["button"].removeEventListener("mouseout", (event) => {
-        event.target.style.backgroundColor = color;
-    }, false);
-
-    obj["button"].addEventListener("mouseout", (event) => {
-        event.target.style.backgroundColor = color;
-    }, false);
+    // obj["button"].removeEventListener("mouseout", (event) => {
+    //     event.target.style.backgroundColor = color;
+    // }, false);
+    //
+    // obj["button"].addEventListener("mouseout", (event) => {
+    //     event.target.style.backgroundColor = color;
+    // }, false);
 
     obj["button"].addEventListener("mouseup", (event) => {
         answerGroups.push(group);
