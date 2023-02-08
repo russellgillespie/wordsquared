@@ -7,7 +7,7 @@ const wordDict = JSON.parse(sessionStorage.getItem('wordDict'));
 console.log('Loaded Dictionary')
 
 // Create Tutorial Constants
-const title = "</br><span class='gameTitle'>WordSquared</span></br></br><span class='subtitle'>* HOW TO PLAY *</span></br>";
+const title = "</br><span class='gameTitle'>WordSquared</span></br></br><span class='subtitle'></br> Introducing DAILY MODE!</br></br>* HOW TO PLAY *</span></br>";
 
 const tutorial = [
   "<span class='tutorial'></br>| 1 |</br>Start the game by pressing a GREEN SLICER button on the grid. This separates the alphabet into QUADRANTS. Careful where you slice... you may want to spread out your VOWELS!</br></span class='tutorial'>",
