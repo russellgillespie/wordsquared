@@ -39,7 +39,7 @@ p, li {
 .gameTitle {
   color: red;
   font-weight: bolder;
-  font-size: 75%;
+  font-size: 100%;
   text-decoration: underline;
   -webkit-text-stroke: .5px black;
 }
@@ -140,7 +140,7 @@ p, li {
   padding-top: 8px;
   text-align : center;
   overflow-y: scroll;
-  line-height: 80%;
+  /* line-height: 80%; */
 }
 
 .guessed > div {
@@ -213,9 +213,21 @@ p, li {
 }
 
 .dnp {
-  background-color: #cc2020;
+  /* background-color: #cc2020; */
   font-weight: bold;
   font-size: 50%;
+}
+
+.dnp:hover {
+  background-color: #ff2222;
+}
+
+.daily-on {
+  background-color: #cc2020;
+}
+
+.daily-off {
+  background-color: #dedede;
 }
 
 .keyLetter {
