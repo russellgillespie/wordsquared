@@ -229,7 +229,7 @@ const init = () => {
 
 
         // Create Credits Panel
-        let keyCredits = addTileButton('button', "WordSquared</br>&#169; Gillespie", 'credits', sliceSize*2 - bezel, sliceSize - bezel, 5 * sliceSize + offset, 6 * sliceSize + offset, colorConsole, colorConsole, null, null);
+        let keyCredits = addTileButton('button', '<a href="mailto:wholesumgames@gmail.com">Feedback @</br>WholeSumGames</a>', 'credits', sliceSize*2 - bezel, sliceSize - bezel, 5 * sliceSize + offset, 6 * sliceSize + offset, colorConsole, colorConsole, null, null);
 
         // Create Score Panel
         let keyScore = addTileButton('button', "000" + score, 'score', sliceSize*2 - bezel, sliceSize - bezel, sliceSize*0 + offset, offset, colorUIMedium, colorUIMedium, null, null);
