@@ -138,6 +138,7 @@ p, li {
   background-color: #deca45;
   padding: 4px;
   padding-top: 8px;
+  padding-bottom: 60px;
   text-align : center;
   overflow-y: scroll;
   /* line-height: 80%; */
