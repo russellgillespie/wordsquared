@@ -1,6 +1,5 @@
 // 2022-02-09
-if (JSON.parse(sessionStorage.getItem('daily')) != [["Q"],["G"],["C"],["K"],["S"],["P"],["V"],["T"],["X"],["Y"],["O"],["I"],["A"],["N"],["B"],["U"],["L"],["W"],["H"],["Z"],["E"],["F"],["M"],["J"[,["R"]]
-  ) {
+if (JSON.parse(sessionStorage.getItem('daily')) != null) {
   console.log('Loading Daily');
   sessionStorage.setItem('randDaily', JSON.stringify(
   [["Q"],["G"],["C"],["K"],["S"],["P"],["V"],["T"],["X"],["Y"],["O"],["I"],["A"],["N"],["B"],["U"],["L"],["W"],["H"],["Z"],["E"],["F"],["M"],["J"[,["R"]]
