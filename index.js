@@ -1,7 +1,8 @@
 'use strict';
 
 console.log("!!! PAGE RELOAD !!!");
-
+console.log(sessionStorage.getItem('randDaily'));
+console.log(sessionStorage.getItem('abcDaily'));
 // Load Dictionary from local storage
 const wordDict = JSON.parse(sessionStorage.getItem('wordDict'));
 console.log('Loaded Dictionary')
