@@ -1,11 +1,11 @@
 'use strict';
 
-console.log("!!! PAGE RELOAD !!!");
-console.log(sessionStorage.getItem('randDaily'));
-console.log(sessionStorage.getItem('abcDaily'));
+//console.log("!!! PAGE RELOAD !!!");
+//console.log(sessionStorage.getItem('randDaily'));
+//console.log(sessionStorage.getItem('abcDaily'));
 // Load Dictionary from local storage
 const wordDict = JSON.parse(sessionStorage.getItem('wordDict'));
-console.log('Loaded Dictionary')
+//console.log('Loaded Dictionary')
 
 // Create Tutorial Constants
 const title = "</br><span class='gameTitle'>WordSquared</span></br><span class='subtitle'>Introducing DAILY MODE!</br>* HOW TO PLAY *</span>";
@@ -16,7 +16,7 @@ const tutorial = [
   "<span class='tutorial'></br>*** BONUS ***</br>In addition to your base score, you'll get a BONUS based on the size of the QUADRANT used.</br>The BONUS is equal to 25 POINTS minus half the amount of LETTERS in the QUADRANT. Once again, choose your SLICES carefully!</br></span class='tutorial'>",
   "<span class='tutorial'></br></br>**************</br>HOW MANY POINTS</br>CAN YOU SCORE?!</br>**************</br></br></p>"
 ];
-console.log('Tutorial Loaded')
+//console.log('Tutorial Loaded')
 
 const alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
@@ -26,9 +26,9 @@ let gameInfo = {'newGame': '', 'daily': '', 'score': '', 'abc': [], 'rand:': [],
 
 //
 // for (const [key, value] of Object.entries(gameInfo)) {
-//   console.log(`${key}: ${value}`);
+//   //console.log(`${key}: ${value}`);
 //   var i = sessionStorage.getItem(key);
-//   console.log(i);
+//   //console.log(i);
 //   (i) ? gameInfo[key] = (JSON.parse(i) || i) : gameInfo[key] = 'default';
 // }
 
@@ -47,7 +47,7 @@ gameInfo.daily = true;
 gameInfo.score = 0;
 // console.log ("sessionStorage abc: " + sessionStorage.getItem('abc') );
 gameInfo.abc = alphabet;
-console.log("alphabet:" + alphabet);
+//console.log("alphabet:" + alphabet);
 gameInfo.rand = [];
 gameInfo.guessed = [];
 //   'newGame': (sessionStorage.getItem('newGame')) || true),
@@ -62,7 +62,7 @@ gameInfo.guessed = [];
 // if (gameInfo.newGame == true) {
 //   sessionStorage.setItem('newGame', JSON.stringify(true));
 // } else {
-//   console.log('Session Data for New Game already Exists!');
+//   //console.log('Session Data for New Game already Exists!');
 // }
 
 // let newGame = (JSON.parse(sessionStorage.getItem('newGame')) === 'true');
@@ -96,7 +96,7 @@ let buttonGroups = [
 //// MAIN INIT FUNCTION
 const init = () => {
     const alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-    console.log(gameInfo);
+    //console.log(gameInfo);
     let gameStarted = false;
     //gameInfo.newGame = false;
 
@@ -127,37 +127,38 @@ const init = () => {
         // NEW GAME CHECKS AND INITIALIZATION
         //console.log('gameInfo.newGame: ' + gameInfo.newGame);
         if (gameInfo.newGame) {
-          console.log('NEW GAME!');
+          //console.log('NEW GAME!');
           gameInfo.newGame = true;
           //gameInfo.daily = gameInfo.daily;
           gameInfo.score = 0;
-          console.log(alphabet);
+          //console.log(alphabet);
           gameInfo.abc = alphabet;
-          console.log(gameInfo.abc);
+          //console.log(gameInfo.abc);
           gameInfo.rand = [];
           gameInfo.guessed = [];
-          console.log(gameInfo);
+          //console.log(gameInfo);
           //randABC = [];
           //gameInfo.rand = [];
-          console.log("abc length: " + gameInfo.abc.length);
+          //console.log("abc length: " + gameInfo.abc.length);
 
           for (let l = 1; l <= 25; l++) {
-              console.log(l + ":" + gameInfo.abc);
+              //console.log(l + ":" + gameInfo.abc);
               let nextLetter = gameInfo.abc.splice(getRandomInt(gameInfo.abc.length), 1);
-              console.log(nextLetter);
+              //console.log(nextLetter);
               //randABC.push(nextLetter);
               gameInfo.rand.push(nextLetter);
           }
-          console.log('end letter button group');
+          //console.log('end letter button group');
           if (gameInfo.daily) {
-            console.log('Setting Daily Game Values');
+            //console.log('Setting Daily Game Values');
             gameInfo.rand = JSON.parse(sessionStorage.randDaily);
             gameInfo.abc = JSON.parse(sessionStorage.abcDaily);
-            console.log("daily variables set: " + gameInfo);
+            //console.log("daily variables set: " + gameInfo);
           }
           sessionStorage.setItem('newGame', JSON.stringify(gameInfo.newGame));
           sessionStorage.setItem('abc', JSON.stringify(gameInfo.abc));
           sessionStorage.setItem('rand', JSON.stringify(gameInfo.rand));
+
           sessionStorage.setItem('score', JSON.stringify(gameInfo.score));
           sessionStorage.setItem('guessed', JSON.stringify(gameInfo.guessed));
         } else {
@@ -167,7 +168,7 @@ const init = () => {
           gameInfo.guessed = JSON.parse(sessionStorage.getItem('guessed'));
           gameInfo.newGame = JSON.parse(sessionStorage.getItem('newGame'));
         }
-
+        console.log(gameInfo.rand);
 
         let slices = 5;
         let sliceSize = 0;
@@ -321,7 +322,7 @@ const init = () => {
           slicerMode = pendingSlicerMode;
           gameInfo.newGame = true;
           sessionStorage.setItem('newGame', JSON.stringify(gameInfo.newGame));
-          console.log("daily: " + gameInfo.daily);
+          //console.log("daily: " + gameInfo.daily);
           if (gameInfo.daily) {
             DNP.classList.add('daily-on');
             DNP.classList.remove('daily-off');
@@ -329,8 +330,8 @@ const init = () => {
             DNP.classList.add('daily-off');
             DNP.classList.remove('daily-on');
           }
-          console.log(gameInfo);
-          console.log('RESETTING GAME!');
+          //console.log(gameInfo);
+          //console.log('RESETTING GAME!');
           init();
         });
 
@@ -426,7 +427,7 @@ const init = () => {
                           continue;
                     }
                     default:
-                        console.log("Error Parsing Slicer Modes!");
+                        //console.log("Error Parsing Slicer Modes!");
                   }
                     var hr = addTileButton('button', "", 'slicer', sliceSize*.5 - bezel, sliceSize*.5 - bezel, xpos + sliceSize*.5/-2+offset, ypos + sliceSize*.5/-2+offset, colorSlicer, null, null, null);
                     //// Add Event Handlers
@@ -440,6 +441,7 @@ const init = () => {
                         keyGuessedPrev.classList.add('reset-confirm-hide');
                         keyGuessedNext.classList.add('reset-confirm-hide');
                         buttonGroups = handleSlicerButton(col, row, buttonList);
+                        console.log("buttonGroups: " + buttonGroups);
                     });
                     slicerList.push(hr)
                  } // SLICER END
@@ -473,8 +475,8 @@ const init = () => {
                       DNP.classList.remove('daily-on');
                       gameInfo.daily = false;
                       sessionStorage.setItem('daily', JSON.stringify(gameInfo.daily));
-                      console.log(fb.name + " Clicked.");
-                      console.log(gameInfo);
+                      //console.log(fb.name + " Clicked.");
+                      //console.log(gameInfo);
                   });
                   featureButtons.push(hr);
 
@@ -501,8 +503,8 @@ const init = () => {
 
       gameInfo.daily = true;
       sessionStorage.setItem('daily', JSON.stringify(gameInfo.daily));
-      console.log(DNP.name + " Clicked.");
-      console.log(gameInfo);
+      //console.log(DNP.name + " Clicked.");
+      //console.log(gameInfo);
     });
     if (gameInfo.daily) {DNP.classList.add('daily-on');}
 
@@ -517,7 +519,7 @@ const init = () => {
     }
     gameInfo.newGame = false;
     sessionStorage.setItem('newGame', JSON.stringify(gameInfo.newgame));
-    console.log(gameInfo);
+    //console.log(gameInfo);
 }
 
 
@@ -647,7 +649,7 @@ function handleSlicerButton(x, y, buttons){
             continue;
         }
         else {
-          console.log("Array range error assigning button groups at " + b["x"] + ": " + b["y"]);
+          //console.log("Array range error assigning button groups at " + b["x"] + ": " + b["y"]);
         }
     }
     return groups;
@@ -671,6 +673,13 @@ function slicerHelper(obj, color, group) {
 
     return obj;
 }
+
+// function extractQuadrantsFromButtonList(buttonList, key) {
+//     var quadrants = [[],[],[],[]]
+//   for (var b in buttonList) {
+//     quadrants[b.group].push(b.)
+//   }
+// }
 
 function countUnique(iterable) {
   return new Set(iterable).size;

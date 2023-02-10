@@ -2,11 +2,11 @@
 let daily = JSON.parse(sessionStorage.getItem('daily'));
 console.log("Daily: " + daily);
 
-let rand = [["Q"],["G"],["C"],["K"],["S"],["P"],["V"],["T"],["X"],["Y"],["O"],["I"],["A"],["N"],["B"],["U"],["L"],["W"],["H"],["Z"],["E"],["F"],["M"],["J"],["R"]];
+let rand = [["O"],["G"],["W"],["J"],["Z"],["B"],["Y"],["L"],["U"],["S"],["P"],["N"],["D"],["E"],["F"],["K"],["C"],["V"],["Q"],["H"],["T"],["M"],["A"],["R"],["X"]];
 
-let abc = "D";
+let abc = "I";
 
-if (daily == null || rand != r) {
+if (daily == null || daily != rand) {
  console.log('Loading Daily');
  sessionStorage.setItem('randDaily', JSON.stringify(rand));
  sessionStorage.setItem('abcDaily', JSON.stringify(abc));
