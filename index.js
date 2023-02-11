@@ -77,7 +77,7 @@ let wordMinLength = 3;
 // GAME DATA
 let randABC = [];
 let score = 0;
-let guessedList = [];
+//let guessedList = [];
 let abc = [];
 let letter = "";
 
@@ -148,6 +148,7 @@ const init = () => {
               //randABC.push(nextLetter);
               gameInfo.rand.push(nextLetter);
           }
+
           //console.log('end letter button group');
           if (gameInfo.daily) {
             //console.log('Setting Daily Game Values');
@@ -155,17 +156,18 @@ const init = () => {
             gameInfo.abc = JSON.parse(sessionStorage.abcDaily);
             //console.log("daily variables set: " + gameInfo);
           }
+          //
           sessionStorage.setItem('newGame', JSON.stringify(gameInfo.newGame));
           sessionStorage.setItem('abc', JSON.stringify(gameInfo.abc));
           sessionStorage.setItem('rand', JSON.stringify(gameInfo.rand));
-
           sessionStorage.setItem('score', JSON.stringify(gameInfo.score));
           sessionStorage.setItem('guessed', JSON.stringify(gameInfo.guessed));
+
         } else {
           gameInfo.abc = JSON.parse(sessionStorage.getItem('abc'))[0];
           gameInfo.rand = JSON.parse(sessionStorage.getItem('rand'));
           gameInfo.score = JSON.parse(sessionStorage.getItem('score'));
-          gameInfo.guessed = JSON.parse(sessionStorage.getItem('guessed'));
+          gameInfo.guessed = JSON.parse(sessionStorage.getItem([]));
           gameInfo.newGame = JSON.parse(sessionStorage.getItem('newGame'));
         }
         //console.log(gameInfo.rand);
@@ -176,7 +178,7 @@ const init = () => {
         // INITIALIZE GAME VARIABLES
         if (gameInfo.newGame === false){
           //console.log(gameInfo.guessed);
-          guessedList = gameInfo.guessed;
+          //guessedList = gameInfo.guessed;
           score = gameInfo.score;
         } else {
           score = 0;
@@ -257,7 +259,9 @@ const init = () => {
             // 3. Answer must be more than 3 letters
                     if (answerText.length >= wordMinLength) {
             // 4. Check if word has already been guessed
-                        if (guessedList.indexOf(answerText) == -1) {
+                        console.log(gameInfo.guessed);
+                        // if (guessedList.indexOf(answerText) == -1) {
+                        if (gameInfo.guessed.indexOf(answerText) == -1) {
             // 5. Check if Key Letter is included
                             if (answerText.includes(gameInfo.abc)) {
             // 6. Validate word in Dictionary
@@ -268,7 +272,8 @@ const init = () => {
                                     var scaling = 25 - buttonGroups[answerGroups[0]].length;
                                     addPoints += (Math.ceil(Math.round(scaling/2)));
             // 8. Add word to Guessed List
-                                    guessedList.push(answerText);
+                                    // guessedList.push(answerText);
+                                    gameInfo.guessed.push(answerText);
                                     // if (score==0) {
                                     if (gameInfo.score==0) {
                                       keyGuessed.innerHTML = "";
@@ -322,6 +327,7 @@ const init = () => {
           slicerMode = pendingSlicerMode;
           gameInfo.newGame = true;
           sessionStorage.setItem('newGame', JSON.stringify(gameInfo.newGame));
+          sessionStorage.setItem('guessed', JSON.stringify([]));
           //console.log("daily: " + gameInfo.daily);
           if (gameInfo.daily) {
             DNP.classList.add('daily-on');
