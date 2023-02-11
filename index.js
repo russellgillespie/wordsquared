@@ -32,7 +32,7 @@ let gameInfo = {'newGame': '', 'daily': '', 'score': '', 'abc': [], 'rand:': [],
 //   (i) ? gameInfo[key] = (JSON.parse(i) || i) : gameInfo[key] = 'default';
 // }
 
-console.log (gameInfo);
+//console.log (gameInfo);
 
 // gameInfo.newGame = sessionStorage.getItem('newGame') || true;
 // gameInfo.daily = sessionStorage.getItem('daily') || true;
@@ -168,7 +168,7 @@ const init = () => {
           gameInfo.guessed = JSON.parse(sessionStorage.getItem('guessed'));
           gameInfo.newGame = JSON.parse(sessionStorage.getItem('newGame'));
         }
-        console.log(gameInfo.rand);
+        //console.log(gameInfo.rand);
 
         let slices = 5;
         let sliceSize = 0;
