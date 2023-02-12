@@ -14,7 +14,8 @@ const tutorial = [
   "<span class='tutorial'></br>| 1 |</br>Start the game by pressing a GREEN SLICER button on the grid. This separates the alphabet into QUADRANTS. Careful where you slice... you may want to spread out your VOWELS!</br></span class='tutorial'>",
   "<span class='tutorial'></br>| 2 |</br> Make a 3+ letter WORD by combingng the YELLOW KEY LETTER at the top with LETTERS from only one QUADRANT at at time!</br></span class='tutorial'>",
   "<span class='tutorial'></br>*** BONUS ***</br>In addition to your base score, you'll get a BONUS based on the size of the QUADRANT used.</br>The BONUS is equal to 25 POINTS minus half the amount of LETTERS in the QUADRANT. Once again, choose your SLICES carefully!</br></span class='tutorial'>",
-  "<span class='tutorial'></br></br>**************</br>HOW MANY POINTS</br>CAN YOU SCORE?!</br>**************</br></br></p>"
+  "<span class='tutorial'></br></br>**************</br>HOW MANY POINTS</br>CAN YOU SCORE?!</br>**************</br></br></span class='tutorial'>",
+  "<span class='tutorial'></br></br>BUG FIXES:</br></br>1. Fixed a bug where guessed words were being cached between gamees.</br></span class='tutorial'>"
 ];
 //console.log('Tutorial Loaded')
 
@@ -148,7 +149,8 @@ const init = () => {
               //randABC.push(nextLetter);
               gameInfo.rand.push(nextLetter);
           }
-
+          console.log(gameInfo.rand);
+          console.log(gameInfo.abc);
           //console.log('end letter button group');
           if (gameInfo.daily) {
             //console.log('Setting Daily Game Values');
