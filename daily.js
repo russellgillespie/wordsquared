@@ -2,9 +2,9 @@
 let daily = JSON.parse(sessionStorage.getItem('daily'));
 //console.log("Daily: " + daily);
 
-let rand = [["G"],["L"],["H"],["P"],["U"],["Y"],["B"],["A"],["M"],["T"],["Z"],["N"],["O"],["K"],["S"],["C"],["X"],["D"],["W"],["J"],["F"],["Q"],["E"],["I"],["V"]];
+let rand = [["X"],["N"],["W"],["F"],["Q"],["S"],["C"],["H"],["M"],["U"],["Z"],["E"],["V"],["B"],["A"],["P"],["Y"],["J"],["G"],["R"],["K"],["L"],["T"],["D"],["I"]];
 
-let abc = "R";
+let abc = "O";
 
 if (daily == null || daily != rand) {
  //console.log('Loading Daily');
@@ -13,6 +13,12 @@ if (daily == null || daily != rand) {
 };
 //console.log (sessionStorage.getItem('randDaily'));
 //console.log (sessionStorage.getItem('abcDaily'));
+
+// 2022-02-15
+//
+//[["X"],["N"],["W"],["F"],["Q"],["S"],["C"],["H"],["M"],["U"],["Z"],["E"],["V"],["B"],["A"],["P"],["Y"],["J"],["G"],["R"],["K"],["L"],["T"],["D"],["I"]]
+
+// "O"
 
 // 2022-02-14
 // [["G"],["L"],["H"],["P"],["U"],["Y"],["B"],["A"],["M"],["T"],["Z"],["N"],["O"],["K"],["S"],["C"],["X"],["D"],["W"],["J"],["F"],["Q"],["E"],["I"],["V"]]
