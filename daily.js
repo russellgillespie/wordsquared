@@ -14,9 +14,12 @@ if (daily == null || daily != rand) {
 //console.log (sessionStorage.getItem('randDaily'));
 //console.log (sessionStorage.getItem('abcDaily'));
 
+// 2023-02-23
+//"U"
+//[["X"],["R"],["W"],["F"],["C"],["H"],["P"],["A"],["V"],["O"],["S"],["E"],["D"],["Q"],["Z"],["I"],["M"],["B"],["L"],["G"],["N"],["T"],["J"],["K"],["Y"]]
 
 // 2023-02-22
-//"S" 
+//"S"
 
 //[["U"],["R"],["K"],["Z"],["D"],["P"],["A"],["B"],["W"],["H"],["J"],["E"],["F"],["Y"],["G"],["V"],["I"],["M"],["Q"],["C"],["X"],["O"],["N"],["T"],["L"]]
 
