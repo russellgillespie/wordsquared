@@ -2,9 +2,9 @@
 let daily = JSON.parse(sessionStorage.getItem('daily'));
 //console.log("Daily: " + daily);
 
-let rand = [["U"],["R"],["K"],["Z"],["D"],["P"],["A"],["B"],["W"],["H"],["J"],["E"],["F"],["Y"],["G"],["V"],["I"],["M"],["Q"],["C"],["X"],["O"],["N"],["T"],["L"]];
+let rand = [["X"],["R"],["W"],["F"],["C"],["H"],["P"],["A"],["V"],["O"],["S"],["E"],["D"],["Q"],["Z"],["I"],["M"],["B"],["L"],["G"],["N"],["T"],["J"],["K"],["Y"]];
 
-let abc = "S";
+let abc = "U";
 
 if (daily == null || daily != rand) {
  //console.log('Loading Daily');
